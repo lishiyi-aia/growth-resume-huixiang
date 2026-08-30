@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="560" viewBox="0 0 1120 560" role="img" aria-labelledby="title desc">
+  <title id="title">Competitor positioning matrix</title>
+  <desc id="desc">A 2x2 competitor matrix comparing content commerce intensity and transaction trust strength.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#10131a"/>
+      <stop offset="100%" stop-color="#07080c"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#000000" flood-opacity="0.32"/>
+    </filter>
+  </defs>
+
+  <rect width="1120" height="560" rx="0" fill="url(#bg)"/>
+  <text x="56" y="52" font-family="Helvetica Neue, Arial, sans-serif" font-size="28" font-weight="800" fill="#f6efe5">Competitor Positioning</text>
+  <text x="56" y="82" font-family="Helvetica Neue, Arial, sans-serif" font-size="15" fill="rgba(246,239,229,0.62)">Content-commerce intensity vs transaction trust strength</text>
+
+  <rect x="128" y="112" width="864" height="338" fill="rgba(255,255,255,0.035)" stroke="rgba(246,239,229,0.18)"/>
+  <line x1="560" y1="112" x2="560" y2="450" stroke="rgba(246,239,229,0.18)" stroke-width="2"/>
+  <line x1="128" y1="281" x2="992" y2="281" stroke="rgba(246,239,229,0.18)" stroke-width="2"/>
+
+  <text x="144" y="137" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="800" fill="rgba(246,239,229,0.42)">High trust / lower content</text>
+  <text x="746" y="137" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="800" fill="rgba(246,239,229,0.42)">High trust + high content</text>
+  <text x="144" y="425" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="800" fill="rgba(246,239,229,0.42)">Generic marketplace</text>
+  <text x="750" y="425" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="800" fill="rgba(246,239,229,0.42)">Content-first commerce</text>
+
+  <rect x="690" y="122" width="248" height="118" rx="18" fill="#14b8a6" opacity="0.13" stroke="#14b8a6" stroke-width="2" stroke-dasharray="8 7"/>
+  <g filter="url(#shadow)">
+    <circle cx="830" cy="202" r="17" fill="#8b5cf6" stroke="#ffffff" stroke-width="4"/>
+    <text x="858" y="207" font-family="Helvetica Neue, Arial, sans-serif" font-size="17" font-weight="800" fill="#f6efe5">Whatnot</text>
+
+    <circle cx="432" cy="206" r="17" fill="#2563eb" stroke="#ffffff" stroke-width="4"/>
+    <text x="322" y="212" font-family="Helvetica Neue, Arial, sans-serif" font-size="17" font-weight="800" fill="#f6efe5">Mercari</text>
+
+    <circle cx="778" cy="330" r="17" fill="#f472b6" stroke="#ffffff" stroke-width="4"/>
+    <text x="806" y="335" font-family="Helvetica Neue, Arial, sans-serif" font-size="17" font-weight="800" fill="#f6efe5">POP MART / TikTok Shop</text>
+
+    <circle cx="510" cy="350" r="17" fill="#f97316" stroke="#ffffff" stroke-width="4"/>
+    <text x="264" y="356" font-family="Helvetica Neue, Arial, sans-serif" font-size="17" font-weight="800" fill="#f6efe5">Reddit BST Communities</text>
+
+    <circle cx="728" cy="170" r="22" fill="#14b8a6" stroke="#ffffff" stroke-width="4"/>
+    <text x="676" y="257" font-family="Helvetica Neue, Arial, sans-serif" font-size="19" font-weight="900" fill="#7dd6c9">Proposed App</text>
+  </g>
+
+  <line x1="128" y1="472" x2="992" y2="472" stroke="rgba(246,239,229,0.2)"/>
+  <polygon points="992,472 976,465 976,479" fill="rgba(246,239,229,0.52)"/>
+  <text x="560" y="506" text-anchor="middle" font-family="Helvetica Neue, Arial, sans-serif" font-size="16" font-weight="800" fill="#f6efe5">Content-commerce intensity</text>
+
+  <line x1="102" y1="450" x2="102" y2="112" stroke="rgba(246,239,229,0.2)"/>
+  <polygon points="102,112 95,128 109,128" fill="rgba(246,239,229,0.52)"/>
+  <text x="46" y="282" text-anchor="middle" font-family="Helvetica Neue, Arial, sans-serif" font-size="16" font-weight="800" fill="#f6efe5" transform="rotate(-90 46 282)">Transaction trust strength</text>
+
+  <text x="720" y="526" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" fill="rgba(246,239,229,0.52)">Strategic note: trust layer + community content.</text>
+</svg>

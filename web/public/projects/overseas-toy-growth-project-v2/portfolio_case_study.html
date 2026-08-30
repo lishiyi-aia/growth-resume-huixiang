@@ -1,0 +1,1281 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="海外潮玩二手交易 App 独立增长研究：公开数据、用户路径、信任模型、内容运营与 KOL/KOC 策略。">
+  <title>海外潮玩二手交易 App 增长策略研究</title>
+  <style>
+    :root {
+      --navy: #071a3f;
+      --navy-2: #103160;
+      --blue: #1769e0;
+      --cyan: #1baea6;
+      --coral: #ef6a50;
+      --gold: #e8b83f;
+      --pink: #df5c93;
+      --green: #188d6d;
+      --ink: #14223a;
+      --muted: #64728a;
+      --line: #d8e1ed;
+      --soft: #f3f6fa;
+      --paper: #ffffff;
+      --page: #eaf0f6;
+      --radius: 8px;
+      --shadow: 0 20px 60px rgba(7, 26, 63, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--page);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      letter-spacing: 0;
+    }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+
+    .skip-link {
+      position: fixed;
+      top: 8px;
+      left: 8px;
+      z-index: 100;
+      transform: translateY(-180%);
+      padding: 8px 12px;
+      border-radius: 4px;
+      color: var(--navy);
+      background: var(--paper);
+      font-weight: 800;
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      padding: 0 max(22px, calc((100vw - 1180px) / 2));
+      color: #fff;
+      background: rgba(6, 20, 48, 0.95);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(14px);
+    }
+    .nav-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: 50%;
+      font-size: 11px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links a {
+      position: relative;
+      padding: 18px 0 16px;
+      color: rgba(255, 255, 255, 0.66);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 180ms ease;
+    }
+    .nav-links a:hover, .nav-links a.active { color: #fff; }
+    .nav-links a.active::after { transform: scaleX(1); }
+    .nav-action {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 7px 12px !important;
+      border: 1px solid rgba(255, 255, 255, 0.38);
+      border-radius: 4px;
+      color: #fff !important;
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .nav-action::after { display: none; }
+
+    .hero {
+      position: relative;
+      min-height: calc(100svh - 116px);
+      max-height: 740px;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      color: #fff;
+      background: var(--navy);
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(5, 17, 38, 0.98) 0%, rgba(5, 17, 38, 0.89) 43%, rgba(5, 17, 38, 0.28) 74%, rgba(5, 17, 38, 0.5) 100%),
+        linear-gradient(0deg, rgba(5, 17, 38, 0.9) 0%, rgba(5, 17, 38, 0.04) 55%),
+        url("designer-toy-hero-v2.png") center / cover no-repeat;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, calc(100% - 44px));
+      margin: 0 auto;
+      padding: 92px 0 58px;
+    }
+    .eyebrow {
+      margin-bottom: 16px;
+      color: #ffd76c;
+      font-size: 12px;
+      font-weight: 850;
+      text-transform: uppercase;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 860px;
+      margin-bottom: 22px;
+      font-size: 66px;
+      line-height: 1.06;
+      font-weight: 900;
+      text-wrap: balance;
+    }
+    .hero-copy {
+      max-width: 710px;
+      margin-bottom: 28px;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 19px;
+      line-height: 1.7;
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .hero-meta span { display: inline-flex; align-items: center; gap: 8px; }
+    .hero-meta span::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--coral);
+    }
+
+    .snapshot {
+      position: relative;
+      z-index: 3;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+    .metric-strip {
+      width: min(1180px, calc(100% - 44px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+    }
+    .metric {
+      min-width: 0;
+      padding: 27px 21px 25px;
+      border-right: 1px solid var(--line);
+    }
+    .metric:last-child { border-right: 0; }
+    .metric-label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 750;
+    }
+    .metric strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--navy);
+      font-size: 40px;
+      line-height: 1;
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+    }
+    .metric p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+
+    .band { background: var(--paper); }
+    .band.soft { background: var(--soft); }
+    .band.dark { color: #fff; background: var(--navy); }
+    .band[id] { scroll-margin-top: 58px; }
+    .band + .band { border-top: 1px solid var(--line); }
+    .report { width: min(1180px, calc(100% - 44px)); margin: 0 auto; }
+    .section { padding: 86px 0; scroll-margin-top: 58px; }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(340px, 0.72fr) minmax(0, 1.28fr);
+      gap: 52px;
+      align-items: start;
+      margin-bottom: 40px;
+    }
+    .kicker {
+      margin-bottom: 12px;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 850;
+      text-transform: uppercase;
+    }
+    .dark .kicker { color: #68d7d0; }
+    h2 {
+      margin-bottom: 0;
+      font-size: 47px;
+      line-height: 1.13;
+      font-weight: 900;
+      text-wrap: balance;
+    }
+    h3 { margin-bottom: 10px; font-size: 19px; line-height: 1.35; font-weight: 850; }
+    .section-lead {
+      max-width: 760px;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.75;
+    }
+    .dark .section-lead { color: rgba(255, 255, 255, 0.72); }
+    .body-copy { color: var(--muted); }
+    .source-note {
+      margin: 16px 0 0;
+      color: #77849a;
+      font-size: 11px;
+      line-height: 1.6;
+    }
+    .source-note a { color: var(--blue); text-decoration: none; }
+    .dark .source-note { color: rgba(255, 255, 255, 0.5); }
+    .dark .source-note a { color: #7fe0d9; }
+
+    .brief-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 34px;
+      align-items: start;
+    }
+    .brief-main {
+      padding: 34px;
+      border-left: 5px solid var(--coral);
+      background: var(--soft);
+    }
+    .brief-main strong { color: var(--navy); }
+    .brief-main p:last-child { margin-bottom: 0; }
+    .role-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 22px; }
+    .role-item { padding: 18px 0; border-top: 3px solid var(--blue); }
+    .role-item:nth-child(2) { border-color: var(--cyan); }
+    .role-item:nth-child(3) { border-color: var(--coral); }
+    .role-item:nth-child(4) { border-color: var(--gold); }
+    .role-item strong { display: block; margin-bottom: 5px; font-size: 15px; }
+    .role-item span { color: var(--muted); font-size: 13px; }
+
+    .evidence-flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--paper);
+    }
+    .evidence-step {
+      position: relative;
+      min-height: 195px;
+      padding: 26px 24px;
+      border-right: 1px solid var(--line);
+      border-top: 5px solid var(--blue);
+    }
+    .evidence-step:nth-child(2) { border-top-color: var(--cyan); }
+    .evidence-step:nth-child(3) { border-top-color: var(--coral); }
+    .evidence-step:nth-child(4) { border-top-color: var(--gold); border-right: 0; }
+    .evidence-step:not(:last-child)::after {
+      content: "+";
+      position: absolute;
+      top: 25px;
+      right: -12px;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--navy);
+      font-weight: 900;
+    }
+    .step-id { display: block; margin-bottom: 30px; color: var(--blue); font-size: 11px; font-weight: 850; }
+    .evidence-step p { margin: 0; color: var(--muted); font-size: 13px; }
+
+    .confidence-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 22px; }
+    .confidence {
+      min-height: 142px;
+      padding: 22px;
+      border-top: 4px solid var(--blue);
+      background: var(--paper);
+    }
+    .confidence:nth-child(2) { border-color: var(--gold); }
+    .confidence:nth-child(3) { border-color: var(--coral); }
+    .confidence strong { display: block; margin-bottom: 5px; color: var(--navy); font-size: 18px; }
+    .confidence p { margin: 0; color: var(--muted); font-size: 12px; }
+
+    .source-register {
+      margin-top: 30px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--paper);
+    }
+    .source-row {
+      display: grid;
+      grid-template-columns: 58px 1fr 1.1fr 112px;
+      gap: 16px;
+      align-items: center;
+      min-height: 72px;
+      padding: 13px 18px;
+      border-bottom: 1px solid var(--line);
+    }
+    .source-row:last-child { border-bottom: 0; }
+    .source-row.header { min-height: 48px; color: var(--muted); background: var(--soft); font-size: 11px; font-weight: 850; }
+    .source-grade { color: var(--blue); font-weight: 900; }
+    .source-name { font-size: 13px; font-weight: 800; }
+    .source-name a { text-decoration: none; }
+    .source-use { color: var(--muted); font-size: 12px; }
+    .source-type { color: var(--muted); font-size: 11px; text-align: right; }
+    .download-row { display: flex; justify-content: flex-end; margin-top: 16px; }
+    .text-link { color: var(--blue); font-size: 13px; font-weight: 800; text-decoration: none; }
+
+    .market-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 30px; align-items: stretch; }
+    .chart-frame { padding: 28px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); }
+    .chart-title { margin-bottom: 4px; color: var(--navy); font-size: 16px; font-weight: 850; }
+    .chart-subtitle { margin-bottom: 24px; color: var(--muted); font-size: 12px; }
+    .bar-group + .bar-group { margin-top: 27px; padding-top: 24px; border-top: 1px solid var(--line); }
+    .bar-group-head { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 12px; }
+    .bar-group-head strong { font-size: 13px; }
+    .bar-group-head span { color: var(--green); font-size: 12px; font-weight: 850; }
+    .bar-line { display: grid; grid-template-columns: 48px 1fr 82px; gap: 12px; align-items: center; margin-top: 9px; }
+    .bar-year { color: var(--muted); font-size: 11px; font-weight: 750; }
+    .bar-track { height: 18px; overflow: hidden; background: #e6ecf3; }
+    .bar-fill { display: block; width: var(--value); height: 100%; background: var(--blue); transform: scaleX(0); transform-origin: left; transition: transform 900ms ease; }
+    .bar-line:nth-child(3) .bar-fill { background: var(--coral); }
+    .in-view .bar-fill { transform: scaleX(1); }
+    .bar-number { color: var(--navy); font-size: 11px; font-weight: 850; text-align: right; }
+
+    .evidence-cards { display: grid; gap: 14px; }
+    .evidence-card { min-height: 118px; padding: 20px; border-left: 4px solid var(--coral); background: var(--soft); }
+    .evidence-card:nth-child(2) { border-color: var(--cyan); }
+    .evidence-card:nth-child(3) { border-color: var(--gold); }
+    .evidence-card span { display: block; margin-bottom: 8px; color: var(--muted); font-size: 11px; font-weight: 850; }
+    .evidence-card strong { display: block; margin-bottom: 5px; font-size: 14px; }
+    .evidence-card p { margin: 0; color: var(--muted); font-size: 12px; }
+
+    .persona-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .persona {
+      min-height: 245px;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-top: 5px solid var(--blue);
+      border-radius: var(--radius);
+      background: var(--paper);
+    }
+    .persona:nth-child(2) { border-top-color: var(--coral); }
+    .persona:nth-child(3) { border-top-color: var(--green); }
+    .persona-no { display: block; margin-bottom: 34px; color: var(--muted); font-size: 11px; font-weight: 850; }
+    .persona p { color: var(--muted); font-size: 13px; }
+    .persona strong:last-child { color: var(--navy); font-size: 12px; }
+
+    .journey {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      margin-top: 26px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--paper);
+    }
+    .journey-step { position: relative; min-height: 200px; padding: 23px 20px; border-right: 1px solid var(--line); }
+    .journey-step:last-child { border-right: 0; }
+    .journey-step::before { content: ""; position: absolute; top: 0; right: 0; left: 0; height: 5px; background: var(--blue); }
+    .journey-step:nth-child(2)::before { background: var(--cyan); }
+    .journey-step:nth-child(3)::before { background: var(--coral); }
+    .journey-step:nth-child(4)::before { background: var(--gold); }
+    .journey-step:nth-child(5)::before { background: var(--green); }
+    .journey-step span { display: block; margin-bottom: 30px; color: var(--muted); font-size: 10px; font-weight: 850; }
+    .journey-step h3 { font-size: 16px; }
+    .journey-step p { margin: 0; color: var(--muted); font-size: 12px; }
+    .journey-step em { display: block; margin-top: 17px; color: var(--coral); font-size: 11px; font-style: normal; font-weight: 850; }
+
+    .barrier-layout { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 34px; align-items: start; }
+    .barrier-chart { display: grid; gap: 16px; }
+    .barrier-row { display: grid; grid-template-columns: 156px 1fr 42px; gap: 14px; align-items: center; }
+    .barrier-label { color: var(--ink); font-size: 12px; font-weight: 750; }
+    .barrier-track { height: 21px; overflow: hidden; background: #e5ebf2; }
+    .barrier-fill { display: block; width: var(--value); height: 100%; background: var(--coral); transform: scaleX(0); transform-origin: left; transition: transform 900ms ease; }
+    .barrier-row:nth-child(2) .barrier-fill { background: var(--gold); }
+    .barrier-row:nth-child(3) .barrier-fill { background: var(--pink); }
+    .barrier-row:nth-child(4) .barrier-fill { background: var(--blue); }
+    .barrier-row:nth-child(5) .barrier-fill { background: var(--green); }
+    .barrier-row:nth-child(6) .barrier-fill { background: var(--cyan); }
+    .in-view .barrier-fill { transform: scaleX(1); }
+    .barrier-score { color: var(--navy); font-size: 12px; font-weight: 900; text-align: right; }
+    .decision-stack { display: grid; gap: 1px; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--line); }
+    .decision { display: grid; grid-template-columns: 96px 1fr; background: var(--paper); }
+    .decision-key { display: grid; place-items: center; min-height: 88px; padding: 12px; color: #fff; background: var(--coral); font-size: 12px; font-weight: 850; text-align: center; }
+    .decision:nth-child(2) .decision-key { background: var(--gold); }
+    .decision:nth-child(3) .decision-key { background: var(--blue); }
+    .decision:nth-child(4) .decision-key { background: var(--green); }
+    .decision-copy { padding: 15px 17px; }
+    .decision-copy strong { display: block; margin-bottom: 3px; font-size: 13px; }
+    .decision-copy p { margin: 0; color: var(--muted); font-size: 12px; }
+
+    .matrix-layout { display: grid; grid-template-columns: 1.22fr 0.78fr; gap: 28px; align-items: start; }
+    .matrix {
+      position: relative;
+      min-height: 510px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(to right, transparent 49.8%, var(--line) 49.8%, var(--line) 50.2%, transparent 50.2%),
+        linear-gradient(to bottom, transparent 49.8%, var(--line) 49.8%, var(--line) 50.2%, transparent 50.2%),
+        var(--paper);
+      overflow: hidden;
+    }
+    .matrix::before {
+      content: "策略机会区";
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 42%;
+      height: 35%;
+      padding: 12px;
+      border: 1px dashed rgba(27, 174, 166, 0.55);
+      color: var(--green);
+      background: rgba(27, 174, 166, 0.08);
+      font-size: 11px;
+      font-weight: 850;
+    }
+    .axis-x, .axis-y { position: absolute; color: var(--muted); font-size: 10px; font-weight: 800; }
+    .axis-x { right: 18px; bottom: 10px; }
+    .axis-y { top: 16px; left: 12px; writing-mode: vertical-rl; transform: rotate(180deg); }
+    .point { position: absolute; transform: translate(-50%, 50%); }
+    .point-dot { display: block; width: 20px; height: 20px; margin: 0 auto 7px; border: 4px solid #fff; border-radius: 50%; background: var(--blue); box-shadow: 0 4px 12px rgba(7, 26, 63, 0.2); }
+    .point-label { display: block; padding: 4px 7px; color: var(--navy); background: rgba(255, 255, 255, 0.92); font-size: 11px; font-weight: 850; white-space: nowrap; }
+    .quadrant-label {
+      position: absolute;
+      z-index: 1;
+      color: #8a96a8;
+      font-size: 10px;
+      font-weight: 850;
+    }
+    .quadrant-label.top-left { top: 18px; left: 42px; }
+    .quadrant-label.bottom-left { bottom: 18px; left: 42px; }
+    .quadrant-label.bottom-right { right: 18px; bottom: 48px; }
+    .point.reddit { left: 24%; bottom: 76%; }
+    .point.reddit .point-dot { background: var(--coral); }
+    .point.mercari { left: 57%; bottom: 32%; }
+    .point.mercari .point-dot { background: var(--blue); }
+    .point.tiktok { left: 55%; bottom: 69%; }
+    .point.tiktok .point-dot { background: var(--pink); }
+    .point.whatnot { left: 75%; bottom: 62%; }
+    .point.whatnot .point-dot { background: var(--gold); }
+    .point.target { left: 84%; bottom: 82%; }
+    .point.target .point-dot { width: 26px; height: 26px; background: var(--cyan); }
+    .point.target .point-label { color: var(--green); }
+    .competitor-list { display: grid; gap: 12px; }
+    .competitor { padding: 17px 18px; border-left: 4px solid var(--blue); background: var(--paper); }
+    .competitor:nth-child(2) { border-color: var(--gold); }
+    .competitor:nth-child(3) { border-color: var(--pink); }
+    .competitor:nth-child(4) { border-color: var(--coral); }
+    .competitor:nth-child(5) { border-color: var(--cyan); }
+    .competitor-head { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 5px; }
+    .competitor-head strong { font-size: 13px; }
+    .competitor-head span { color: var(--muted); font-size: 10px; font-weight: 850; }
+    .competitor p { margin: 0; color: var(--muted); font-size: 11px; }
+
+    .trust-engine {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 11px;
+      align-items: stretch;
+    }
+    .trust-node {
+      position: relative;
+      min-height: 190px;
+      padding: 24px 20px;
+      color: #fff;
+      background: var(--blue);
+      border-radius: var(--radius);
+    }
+    .trust-node:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      top: 50%;
+      right: -18px;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      width: 25px;
+      height: 25px;
+      border: 3px solid var(--navy);
+      border-radius: 50%;
+      color: var(--navy);
+      background: var(--gold);
+      font-size: 13px;
+      font-weight: 900;
+      transform: translateY(-50%);
+    }
+    .trust-node:nth-child(2) { background: var(--cyan); }
+    .trust-node:nth-child(3) { background: var(--coral); }
+    .trust-node:nth-child(4) { background: var(--gold); color: var(--navy); }
+    .trust-node:nth-child(5) { background: var(--green); }
+    .trust-node span { display: block; margin-bottom: 31px; font-size: 10px; font-weight: 850; opacity: 0.78; }
+    .trust-node h3 { font-size: 16px; }
+    .trust-node p { margin: 0; font-size: 11px; line-height: 1.6; opacity: 0.86; }
+    .loop-line {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      margin-top: 24px;
+      border-top: 2px solid rgba(255, 255, 255, 0.28);
+    }
+    .loop-item { position: relative; padding: 20px 12px 0 0; color: rgba(255, 255, 255, 0.7); font-size: 11px; font-weight: 750; }
+    .loop-item::before { content: ""; position: absolute; top: -7px; left: 0; width: 12px; height: 12px; border: 2px solid var(--navy); border-radius: 50%; background: var(--gold); }
+
+    .content-model { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--paper); }
+    .content-row {
+      display: grid;
+      grid-template-columns: 0.8fr 1.05fr 1.4fr 0.9fr 1fr;
+      min-height: 92px;
+      border-bottom: 1px solid var(--line);
+    }
+    .content-row:last-child { border-bottom: 0; }
+    .content-row.header { min-height: 48px; color: var(--muted); background: var(--soft); font-size: 10px; font-weight: 850; }
+    .content-cell { display: flex; align-items: center; padding: 14px 16px; border-right: 1px solid var(--line); font-size: 12px; }
+    .content-cell:last-child { border-right: 0; }
+    .content-row:not(.header) .content-cell:first-child { color: var(--navy); font-weight: 900; }
+    .content-row:not(.header) .content-cell:nth-child(2) { color: var(--coral); font-weight: 750; }
+    .content-row:not(.header) .content-cell:nth-child(4) { color: var(--blue); font-weight: 750; }
+
+    .kol-layout { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 34px; align-items: start; }
+    .weight-chart { display: grid; gap: 15px; }
+    .weight-row { display: grid; grid-template-columns: 126px 1fr 44px; gap: 13px; align-items: center; }
+    .weight-label { font-size: 12px; font-weight: 750; }
+    .weight-track { height: 16px; overflow: hidden; background: rgba(255, 255, 255, 0.12); }
+    .weight-fill { display: block; width: var(--value); height: 100%; background: #67d6cf; transform: scaleX(0); transform-origin: left; transition: transform 900ms ease; }
+    .weight-row:nth-child(2) .weight-fill { background: #ffca62; }
+    .weight-row:nth-child(3) .weight-fill { background: #f48972; }
+    .weight-row:nth-child(4) .weight-fill { background: #79a7ff; }
+    .weight-row:nth-child(5) .weight-fill { background: #e980ac; }
+    .in-view .weight-fill { transform: scaleX(1); }
+    .weight-value { color: #fff; font-size: 11px; font-weight: 850; text-align: right; }
+    .screening { display: grid; grid-template-columns: 1.3fr 0.9fr 0.9fr; gap: 10px; }
+    .screening-step { min-height: 148px; padding: 24px; color: #fff; background: var(--blue); }
+    .screening-step:nth-child(2) { background: var(--cyan); }
+    .screening-step:nth-child(3) { color: var(--navy); background: var(--gold); }
+    .screening-step strong { display: block; margin-bottom: 8px; font-size: 34px; line-height: 1; }
+    .screening-step span { display: block; margin-bottom: 18px; font-size: 11px; font-weight: 850; }
+    .screening-step p { margin: 0; font-size: 11px; opacity: 0.84; }
+    .tier-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px; }
+    .tier { padding: 15px; border: 1px solid rgba(255, 255, 255, 0.2); }
+    .tier strong { display: block; margin-bottom: 3px; font-size: 13px; }
+    .tier span { color: rgba(255, 255, 255, 0.58); font-size: 10px; }
+
+    .launch-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .launch-card { min-height: 210px; padding: 24px; border: 1px solid var(--line); border-top: 5px solid var(--blue); background: var(--paper); }
+    .launch-card:nth-child(2) { border-top-color: var(--cyan); }
+    .launch-card:nth-child(3) { border-top-color: var(--coral); }
+    .launch-card:nth-child(4) { border-top-color: var(--gold); }
+    .launch-week { display: block; margin-bottom: 30px; color: var(--blue); font-size: 10px; font-weight: 850; text-transform: uppercase; }
+    .launch-card h3 { font-size: 16px; }
+    .launch-card p { margin: 0; color: var(--muted); font-size: 12px; }
+    .launch-card em { display: block; margin-top: 16px; color: var(--coral); font-size: 11px; font-style: normal; font-weight: 800; }
+    .allocation-title { margin: 34px 0 12px; color: var(--navy); font-size: 13px; font-weight: 850; }
+    .budget-allocation { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; border: 1px solid var(--line); background: var(--line); }
+    .budget-cell { min-height: 116px; padding: 18px; background: var(--paper); }
+    .budget-cell strong { display: block; margin-bottom: 12px; color: var(--blue); font-size: 26px; line-height: 1; }
+    .budget-cell span { display: block; color: var(--navy); font-size: 12px; font-weight: 800; }
+    .budget-cell small { display: block; margin-top: 5px; color: var(--muted); font-size: 10px; }
+    .referral-loop { display: grid; grid-template-columns: repeat(5, 1fr); margin-top: 24px; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--paper); }
+    .referral-step { position: relative; min-height: 148px; padding: 20px; border-right: 1px solid var(--line); }
+    .referral-step:last-child { border-right: 0; }
+    .referral-step:not(:last-child)::after { content: "→"; position: absolute; top: 18px; right: -11px; z-index: 2; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; color: #fff; background: var(--navy); font-size: 12px; font-weight: 900; }
+    .referral-step span { display: block; margin-bottom: 24px; color: var(--cyan); font-size: 10px; font-weight: 850; }
+    .referral-step strong { display: block; margin-bottom: 6px; font-size: 13px; }
+    .referral-step p { margin: 0; color: var(--muted); font-size: 10px; }
+
+    .delivery-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+    .delivery-card { min-height: 208px; padding: 22px; border: 1px solid rgba(255, 255, 255, 0.18); border-top: 4px solid #6edbd2; }
+    .delivery-card:nth-child(2) { border-top-color: #79a7ff; }
+    .delivery-card:nth-child(3) { border-top-color: #ffca62; }
+    .delivery-card:nth-child(4) { border-top-color: #f48972; }
+    .delivery-card:nth-child(5) { border-top-color: #e980ac; }
+    .delivery-card span { display: block; margin-bottom: 25px; color: rgba(255, 255, 255, 0.55); font-size: 10px; font-weight: 850; text-transform: uppercase; }
+    .delivery-card h3 { font-size: 15px; }
+    .delivery-card p { margin: 0; color: rgba(255, 255, 255, 0.65); font-size: 11px; }
+    .handoff-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 26px; background: rgba(255, 255, 255, 0.16); }
+    .handoff-step { min-height: 92px; padding: 18px; background: rgba(255, 255, 255, 0.06); }
+    .handoff-step strong { display: block; margin-bottom: 5px; color: #fff; font-size: 12px; }
+    .handoff-step span { color: rgba(255, 255, 255, 0.56); font-size: 10px; }
+
+    .metric-tree { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .tree-node { min-height: 158px; padding: 22px; border-top: 4px solid var(--blue); background: var(--paper); }
+    .tree-node:nth-child(2) { border-color: var(--cyan); }
+    .tree-node:nth-child(3) { border-color: var(--coral); }
+    .tree-node:nth-child(4) { border-color: var(--gold); }
+    .tree-node:nth-child(5) { border-color: var(--pink); }
+    .tree-node:nth-child(6) { border-color: var(--green); }
+    .tree-node:nth-child(7) { border-color: #7e8ca0; }
+    .tree-node.north-star { color: #fff; background: var(--navy); border-color: var(--gold); }
+    .tree-node span { display: block; margin-bottom: 20px; color: var(--muted); font-size: 10px; font-weight: 850; text-transform: uppercase; }
+    .tree-node.north-star span { color: rgba(255, 255, 255, 0.58); }
+    .tree-node h3 { font-size: 15px; }
+    .tree-node p { margin: 0; color: var(--muted); font-size: 11px; }
+    .tree-node.north-star p { color: rgba(255, 255, 255, 0.7); }
+
+    .review-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; margin-top: 28px; border: 1px solid var(--line); background: var(--line); }
+    .review-rule { min-height: 126px; padding: 22px; background: var(--paper); }
+    .review-rule strong { display: block; margin-bottom: 6px; color: var(--navy); font-size: 13px; }
+    .review-rule p { margin: 0; color: var(--muted); font-size: 12px; }
+
+    .rice-table { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--paper); }
+    .rice-row { display: grid; grid-template-columns: 54px 1.4fr 82px 1fr; min-height: 72px; border-bottom: 1px solid var(--line); }
+    .rice-row:last-child { border-bottom: 0; }
+    .rice-row.header { min-height: 46px; color: var(--muted); background: var(--soft); font-size: 10px; font-weight: 850; }
+    .rice-cell { display: flex; align-items: center; padding: 13px 16px; border-right: 1px solid var(--line); font-size: 12px; }
+    .rice-cell:last-child { border-right: 0; }
+    .rice-row:not(.header) .rice-cell:first-child { color: var(--blue); font-weight: 900; }
+    .rice-row:not(.header) .rice-cell:nth-child(3) { color: var(--navy); font-weight: 900; font-variant-numeric: tabular-nums; }
+    .rice-row:not(.header) .rice-cell:nth-child(4) { color: var(--muted); }
+
+    .final-loop {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .final-node { position: relative; min-height: 174px; padding: 24px 18px; border-right: 1px solid rgba(255, 255, 255, 0.16); }
+    .final-node:last-child { border-right: 0; }
+    .final-node:not(:last-child)::after { content: "→"; position: absolute; top: 22px; right: -12px; z-index: 2; display: grid; place-items: center; width: 24px; height: 24px; color: var(--navy); background: var(--gold); border-radius: 50%; font-weight: 900; }
+    .final-node span { display: block; margin-bottom: 30px; color: #6edbd2; font-size: 10px; font-weight: 850; }
+    .final-node strong { display: block; margin-bottom: 6px; font-size: 14px; }
+    .final-node p { margin: 0; color: rgba(255, 255, 255, 0.6); font-size: 11px; }
+    .closing {
+      display: flex;
+      justify-content: space-between;
+      gap: 28px;
+      align-items: flex-end;
+      margin-top: 38px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .closing strong { max-width: 760px; font-size: 25px; line-height: 1.45; }
+    .back-link { min-width: 146px; padding: 10px 14px; border: 1px solid rgba(255, 255, 255, 0.36); border-radius: 4px; color: #fff; text-align: center; text-decoration: none; font-size: 12px; font-weight: 850; }
+
+    .site-footer { padding: 24px 22px; color: rgba(255, 255, 255, 0.56); background: #041229; text-align: center; font-size: 11px; }
+
+    @media (max-width: 980px) {
+      h1 { font-size: 54px; }
+      .metric-strip { grid-template-columns: repeat(3, 1fr); }
+      .metric:nth-child(3) { border-right: 0; }
+      .metric:nth-child(n+4) { border-top: 1px solid var(--line); }
+      .section-head, .market-grid, .matrix-layout, .kol-layout { grid-template-columns: 1fr; gap: 28px; }
+      .section-head { margin-bottom: 34px; }
+      .brief-grid, .barrier-layout { grid-template-columns: 1fr; }
+      .evidence-flow { grid-template-columns: repeat(2, 1fr); }
+      .evidence-step:nth-child(2) { border-right: 0; }
+      .evidence-step:nth-child(n+3) { border-top-width: 1px; border-top-color: var(--line); }
+      .evidence-step:nth-child(2)::after { display: none; }
+      .journey { grid-template-columns: repeat(3, 1fr); }
+      .journey-step:nth-child(3) { border-right: 0; }
+      .journey-step:nth-child(n+4) { border-top: 1px solid var(--line); }
+      .trust-engine { grid-template-columns: repeat(3, 1fr); }
+      .trust-node::after { display: none !important; }
+      .loop-line, .final-loop { grid-template-columns: repeat(3, 1fr); }
+      .final-node:nth-child(3) { border-right: 0; }
+      .final-node:nth-child(n+4) { border-top: 1px solid rgba(255, 255, 255, 0.16); }
+      .final-node:nth-child(3)::after { display: none; }
+      .metric-tree { grid-template-columns: repeat(3, 1fr); }
+      .launch-grid { grid-template-columns: repeat(2, 1fr); }
+      .budget-allocation { grid-template-columns: repeat(3, 1fr); }
+      .referral-loop, .delivery-grid { grid-template-columns: repeat(3, 1fr); }
+      .referral-step:nth-child(3), .delivery-card:nth-child(3) { border-right: 0; }
+      .referral-step:nth-child(n+4) { border-top: 1px solid var(--line); }
+      .delivery-card:nth-child(n+4) { border-top: 1px solid rgba(255, 255, 255, 0.16); }
+      .referral-step:nth-child(3)::after { display: none; }
+    }
+
+    @media (max-width: 720px) {
+      .site-nav { padding-right: 16px; padding-left: 16px; gap: 12px; }
+      .nav-brand span:last-child { display: none; }
+      .nav-links { gap: 15px; }
+      .nav-links a { font-size: 11px; }
+      .nav-action { display: none !important; }
+      .hero { min-height: calc(100svh - 102px); max-height: none; }
+      .hero::before {
+        background:
+          linear-gradient(0deg, rgba(5, 17, 38, 0.97) 0%, rgba(5, 17, 38, 0.85) 56%, rgba(5, 17, 38, 0.32) 100%),
+          url("designer-toy-hero-v2.png") 67% center / cover no-repeat;
+      }
+      .hero-inner, .report, .metric-strip { width: min(100% - 32px, 1180px); }
+      .hero-inner { padding: 230px 0 42px; }
+      h1 { font-size: 38px; line-height: 1.12; }
+      .hero-copy { font-size: 16px; }
+      .metric-strip { grid-template-columns: repeat(2, 1fr); }
+      .metric { padding: 21px 15px; border-top: 1px solid var(--line); }
+      .metric:nth-child(2n) { border-right: 0; }
+      .metric:first-child, .metric:nth-child(2) { border-top: 0; }
+      .metric:nth-child(3) { border-right: 1px solid var(--line); }
+      .metric strong { font-size: 32px; }
+      .section { padding: 64px 0; }
+      h2 { font-size: 34px; }
+      .section-lead { font-size: 16px; }
+      .role-list, .confidence-grid, .persona-grid, .review-grid { grid-template-columns: 1fr; }
+      .evidence-flow, .journey, .trust-engine, .loop-line, .metric-tree, .final-loop { grid-template-columns: 1fr; }
+      .evidence-step, .journey-step, .final-node { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
+      .evidence-step:last-child, .journey-step:last-child, .final-node:last-child { border-bottom: 0; }
+      .evidence-step::after, .final-node::after { display: none !important; }
+      .trust-node { min-height: 150px; clip-path: none; }
+      .source-register { overflow-x: auto; }
+      .source-row { min-width: 720px; }
+      .barrier-row { grid-template-columns: 120px 1fr 34px; gap: 10px; }
+      .matrix { min-height: 420px; }
+      .matrix::before { width: 45%; height: 34%; }
+      .point-label { font-size: 9px; }
+      .content-model { border: 0; background: transparent; }
+      .content-row.header { display: none; }
+      .content-row {
+        grid-template-columns: 1fr 1fr;
+        min-height: 0;
+        margin-bottom: 12px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--paper);
+        overflow: hidden;
+      }
+      .content-cell { min-height: 64px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+      .content-cell:nth-child(2n) { border-right: 0; }
+      .content-cell:last-child { grid-column: 1 / -1; border-bottom: 0; }
+      .screening, .tier-row { grid-template-columns: 1fr; }
+      .metric-tree { grid-template-columns: repeat(2, 1fr); }
+      .launch-grid, .budget-allocation, .referral-loop, .delivery-grid, .handoff-bar { grid-template-columns: 1fr; }
+      .referral-step, .delivery-card { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
+      .referral-step::after { display: none !important; }
+      .budget-cell { min-height: 0; }
+      .rice-table { overflow-x: auto; }
+      .rice-row { min-width: 720px; }
+      .closing { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (max-width: 420px) {
+      h1 { font-size: 34px; }
+      .hero-inner { padding-top: 210px; }
+      .metric-strip, .metric-tree { grid-template-columns: 1fr; }
+      .metric, .metric:nth-child(3) { border-right: 0; }
+      .metric:nth-child(2) { border-top: 1px solid var(--line); }
+      .brief-main { padding: 25px; }
+      .bar-line { grid-template-columns: 40px 1fr 72px; }
+      .decision { grid-template-columns: 82px 1fr; }
+      .matrix { min-height: 380px; }
+      .point.reddit { left: 25%; }
+      .point.tiktok { left: 54%; }
+      .point.whatnot { left: 74%; }
+      .point.target { left: 82%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+      .bar-fill, .barrier-fill, .weight-fill { transform: scaleX(1); }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到项目内容</a>
+
+  <nav class="site-nav" aria-label="项目导航">
+    <a class="nav-brand" href="../../../">
+      <span class="brand-mark">SL</span>
+      <span>Sylvia · Growth Research</span>
+    </a>
+    <div class="nav-links">
+      <a href="#overview">项目</a>
+      <a href="#evidence">数据</a>
+      <a href="#users">用户</a>
+      <a href="#strategy">策略</a>
+      <a href="#operations">运营</a>
+      <a href="#launch">增长</a>
+      <a href="#delivery">落地</a>
+      <a href="#measurement">指标</a>
+      <a class="nav-action" href="../../../">返回作品集</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">Independent Growth Research · Overseas C2C Marketplace</p>
+      <h1>海外潮玩二手交易 App 增长策略研究</h1>
+      <p class="hero-copy">围绕海外潮玩用户从内容发现、社区验证到下单履约的关键阻碍，以公开数据、平台规则和社区观察为依据，形成社媒增长、达人合作、活动裂变、交易信任与跨团队落地方案。</p>
+      <div class="hero-meta">
+        <span>个人独立研究项目</span>
+        <span>海外增长运营</span>
+        <span>用户研究与竞品分析</span>
+        <span>社媒增长与达人合作</span>
+        <span>数据模型与策略设计</span>
+      </div>
+    </div>
+  </header>
+
+  <aside class="snapshot" aria-label="研究产出概览">
+    <div class="metric-strip">
+      <div class="metric"><span class="metric-label">公开证据记录</span><strong>19</strong><p>财报、监管、平台规则与社区观察</p></div>
+      <div class="metric"><span class="metric-label">目标用户</span><strong>3</strong><p>新手、交易型藏家与礼物用户</p></div>
+      <div class="metric"><span class="metric-label">核心障碍</span><strong>6</strong><p>从真假风险到社区身份</p></div>
+      <div class="metric"><span class="metric-label">竞品类型</span><strong>4</strong><p>内容电商、C2C、官方渠道与社区</p></div>
+      <div class="metric"><span class="metric-label">策略优先项</span><strong>8</strong><p>使用 RICE 模型进行排序</p></div>
+    </div>
+  </aside>
+
+  <main id="main">
+    <div class="band" id="overview">
+      <section class="section report">
+        <div class="section-head">
+          <div><p class="kicker">01 · Project Brief</p><h2>从“被种草”到“敢交易”</h2></div>
+          <p class="section-lead">研究对象是一款面向海外收藏者的潮玩二手交易 App。项目从用户、市场和平台证据出发，将增长机会拆成产品信任、社媒内容、达人合作、活动裂变与交付协同五类任务。</p>
+        </div>
+        <div class="brief-grid">
+          <div class="brief-main">
+            <h3>核心研究命题</h3>
+            <p>当用户已经对 Labubu、Designer Toys 等潮玩产生兴趣，哪些因素仍会阻碍他们在新的 C2C App 中完成购买？</p>
+            <p><strong>研究结论：</strong>用户不缺兴趣，主要决策成本来自真假鉴定、卖家可信度、价格透明和交易保护。增长策略因此从“扩大曝光”转向“先建立可信交易理由，再放大内容与社群”。</p>
+          </div>
+          <div class="role-list" aria-label="项目能力">
+            <div class="role-item"><strong>市场研究</strong><span>财报、监管信息与品类信号</span></div>
+            <div class="role-item"><strong>用户洞察</strong><span>用户分层、路径与问题编码</span></div>
+            <div class="role-item"><strong>增长运营</strong><span>渠道、内容与达人策略</span></div>
+            <div class="role-item"><strong>数据分析</strong><span>指标树、评分与优先级模型</span></div>
+            <div class="role-item"><strong>活动策划</strong><span>用户裂变、双边奖励与风控</span></div>
+            <div class="role-item"><strong>协同落地</strong><span>产品、设计、客服与物流交付</span></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="band soft" id="evidence">
+      <section class="section report">
+        <div class="section-head">
+          <div><p class="kicker">02 · Evidence System</p><h2>公开数据如何进入运营判断</h2></div>
+          <p class="section-lead">项目建立 Evidence Matrix，逐条记录来源、日期、指标、原始链接、使用场景与可信度。硬数据和方向性观察分开使用，避免把社区讨论误写成市场规模。</p>
+        </div>
+
+        <div class="evidence-flow" aria-label="证据到策略的数据流程">
+          <div class="evidence-step"><span class="step-id">INPUT 01</span><h3>证据采集</h3><p>财报、监管警告、平台政策、公开社区与创作者账号。</p></div>
+          <div class="evidence-step"><span class="step-id">PROCESS 02</span><h3>结构化编码</h3><p>按市场、风险、交易、社区、内容与达人六个维度打标签。</p></div>
+          <div class="evidence-step"><span class="step-id">MODEL 03</span><h3>模型计算</h3><p>问题优先级、竞品矩阵、KOL/KOC 加权评分与 RICE 排序。</p></div>
+          <div class="evidence-step"><span class="step-id">OUTPUT 04</span><h3>运营决策</h3><p>确定产品信任机制、渠道角色、内容主题和测量指标。</p></div>
+        </div>
+
+        <div class="confidence-grid" aria-label="来源可信度等级">
+          <article class="confidence"><strong>A · 事实依据</strong><p>公司财报、政府监管与平台官方政策。用于市场数字、风险事实和规则对比。</p></article>
+          <article class="confidence"><strong>B · 方向判断</strong><p>行业报告、公开平台页面与社区分析。用于趋势判断和内容主题设计。</p></article>
+          <article class="confidence"><strong>C · 候选观察</strong><p>创作者公开主页与单条内容表现。用于建立候选池，正式合作前需刷新。</p></article>
+        </div>
+
+        <div class="source-register" aria-label="核心数据来源">
+          <div class="source-row header"><div>等级</div><div>来源</div><div>项目用途</div><div>类型</div></div>
+          <div class="source-row"><div class="source-grade">A</div><div class="source-name"><a href="https://prod-out-res.popmart.com/cms/ANNUAL_RESULTS_ANNOUNCEMENT_FOR_THE_YEAR_ENDED_31_DECEMBER_2024_620c37efe4.pdf">POP MART 2024 年度业绩</a></div><div class="source-use">品类规模、海外增长与 THE MONSTERS 收入</div><div class="source-type">公司财报</div></div>
+          <div class="source-row"><div class="source-grade">A</div><div class="source-name"><a href="https://www.cpsc.gov/Recalls/2025/Consumer-Safety-Alert-CPSC-Issues-Urgent-Safety-Warning-to-Labubu-Collectors">美国 CPSC 安全警告</a></div><div class="source-use">仿冒风险及 QR、全息标识、UV 检查要素</div><div class="source-type">监管机构</div></div>
+          <div class="source-row"><div class="source-grade">A</div><div class="source-name"><a href="https://help.whatnot.com/hc/en-us/articles/360061604031-Counterfeit-Policy-and-Restricted-Branded-Items-Policy">Whatnot 假货政策</a></div><div class="source-use">卖家举证、假货管理与平台信任机制</div><div class="source-type">平台政策</div></div>
+          <div class="source-row"><div class="source-grade">A</div><div class="source-name"><a href="https://www.mercari.com/us/help_center/article/475/">Mercari Authenticate</a></div><div class="source-use">第三方图片鉴定、认证标识与发布流程</div><div class="source-type">平台政策</div></div>
+          <div class="source-row"><div class="source-grade">B</div><div class="source-name"><a href="https://gummysearch.com/r/labubu/">Reddit 社区公开观察</a></div><div class="source-use">收藏展示、真假讨论、补货与买卖主题</div><div class="source-type">方向性观察</div></div>
+        </div>
+        <div class="download-row"><a class="text-link" href="data_sources.csv">查看完整 19 项 Evidence Matrix →</a></div>
+      </section>
+    </div>
+
+    <div class="band">
+      <section class="section report">
+        <div class="section-head">
+          <div><p class="kicker">03 · Market & Risk</p><h2>需求增长与信任风险同时上升</h2></div>
+          <p class="section-lead">市场数据证明潮玩需求并非主观判断；监管和平台规则则显示，真假问题已经从内容话题升级为安全与交易问题。</p>
+        </div>
+
+        <div class="market-grid">
+          <div class="chart-frame market-bars" data-animate>
+            <div class="chart-title">POP MART 与 THE MONSTERS 收入变化</div>
+            <div class="chart-subtitle">单位：十亿元人民币</div>
+            <div class="bar-group">
+              <div class="bar-group-head"><strong>POP MART 总收入</strong><span>+106.9%</span></div>
+              <div class="bar-line"><span class="bar-year">2023</span><span class="bar-track"><span class="bar-fill" style="--value:48.3%"></span></span><span class="bar-number">6.30</span></div>
+              <div class="bar-line"><span class="bar-year">2024</span><span class="bar-track"><span class="bar-fill" style="--value:100%"></span></span><span class="bar-number">13.04</span></div>
+            </div>
+            <div class="bar-group">
+              <div class="bar-group-head"><strong>THE MONSTERS 收入</strong><span>+726.6%</span></div>
+              <div class="bar-line"><span class="bar-year">2023</span><span class="bar-track"><span class="bar-fill" style="--value:12.1%"></span></span><span class="bar-number">0.37</span></div>
+              <div class="bar-line"><span class="bar-year">2024</span><span class="bar-track"><span class="bar-fill" style="--value:100%"></span></span><span class="bar-number">3.04</span></div>
+            </div>
+            <p class="source-note">Source: <a href="https://prod-out-res.popmart.com/cms/ANNUAL_RESULTS_ANNOUNCEMENT_FOR_THE_YEAR_ENDED_31_DECEMBER_2024_620c37efe4.pdf">POP MART Annual Results 2024</a>, pp. 1, 19, 30.</p>
+          </div>
+
+          <div class="evidence-cards">
+            <article class="evidence-card"><span>RISK SIGNAL</span><strong>仿冒品带来安全与真假判断风险</strong><p>CPSC 提醒消费者检查全息标识、官方二维码与新版产品的 UV 标记。</p></article>
+            <article class="evidence-card"><span>PLATFORM RESPONSE</span><strong>成熟平台将鉴定放入发布流程</strong><p>Mercari 要求上传特定细节图片，由第三方团队审核并展示认证标识。</p></article>
+            <article class="evidence-card"><span>TRANSACTION RESPONSE</span><strong>交易保护覆盖履约与描述问题</strong><p>Whatnot 与 Mercari 均把支付、物流、描述不符及争议处理写入平台规则。</p></article>
+          </div>
+        </div>
+        <p class="source-note">Source: <a href="https://www.cpsc.gov/Recalls/2025/Consumer-Safety-Alert-CPSC-Issues-Urgent-Safety-Warning-to-Labubu-Collectors">U.S. CPSC Safety Alert</a>; <a href="https://www.mercari.com/us/help_center/article/475/">Mercari Authenticate</a>; <a href="https://help.whatnot.com/hc/en-us/articles/38113709695501-Get-help-with-your-purchase">Whatnot Buyer Protection</a>.</p>
+      </section>
+    </div>
+
+    <div class="band soft" id="users">
+      <section class="section report">
+        <div class="section-head">
+          <div><p class="kicker">04 · User Insight</p><h2>三类用户，共用一条信任路径</h2></div>
+          <p class="section-lead">用户分层依据内容入口、交易经验和购买目的建立。三类用户偏好不同，但都会在 Compare、Evaluate 与 Purchase 阶段寻找可信信息。</p>
+        </div>
+
+        <div class="persona-grid">
+          <article class="persona"><span class="persona-no">PERSONA 01</span><h3>内容种草型新用户</h3><p>通过 TikTok、Reels 与开箱内容进入品类，关注热门款和隐藏款，但缺少真假、价格和二手交易经验。</p><strong>关键任务：降低第一次交易的学习成本</strong></article>
+          <article class="persona"><span class="persona-no">PERSONA 02</span><h3>交易型收藏者</h3><p>持续购买、出售或交换藏品，关注卖家信誉、商品状态、近期成交价格、物流效率与纠纷处理。</p><strong>关键任务：提高信息密度与交易确定性</strong></article>
+          <article class="persona"><span class="persona-no">PERSONA 03</span><h3>礼物与生活方式用户</h3><p>购买频率较低，容易受到视觉内容和送礼场景影响，更重视流程简单、商品可信和交付确定性。</p><strong>关键任务：用清晰证明缩短决策路径</strong></article>
+        </div>
+
+        <div class="journey" aria-label="用户决策路径模型">
+          <div class="journey-step"><span>01 · DISCOVER</span><h3>发现</h3><p>短视频、开箱、热门 IP 和社区讨论。</p><em>兴趣形成</em></div>
+          <div class="journey-step"><span>02 · COMPARE</span><h3>比较</h3><p>官方售价、二手价格、状态与稀缺度。</p><em>价格不确定</em></div>
+          <div class="journey-step"><span>03 · EVALUATE</span><h3>评估</h3><p>真假、卖家信用与商品细节。</p><em>高风险节点</em></div>
+          <div class="journey-step"><span>04 · PURCHASE</span><h3>交易</h3><p>支付、物流、退款与争议规则。</p><em>高风险节点</em></div>
+          <div class="journey-step"><span>05 · RETAIN</span><h3>留存</h3><p>愿望单、补货提醒、收藏与交易记录。</p><em>习惯沉淀</em></div>
+        </div>
+        <p class="source-note">Source: S03–S12 平台规则与社区观察；用户路径及分层为本项目研究模型。</p>
+      </section>
+    </div>
+
+    <div class="band">
+      <section class="section report">
+        <div class="section-head">
+          <div><p class="kicker">05 · Trust Barrier Model</p><h2>用问题得分决定运营优先级</h2></div>
+          <p class="section-lead">将19项证据按用户问题编码，再使用“来源出现频次 × 决策影响程度”排序。得分用于确定先解决什么，不代表用户总体发生率。</p>
+        </div>
+
+        <div class="barrier-layout">
+          <div class="chart-frame barrier-chart" data-animate>
+            <div class="chart-title">信任障碍优先级</div>
+            <div class="chart-subtitle">Priority score = mentions × severity</div>
+            <div class="barrier-row"><span class="barrier-label">真假与仿冒风险</span><span class="barrier-track"><span class="barrier-fill" style="--value:100%"></span></span><span class="barrier-score">40</span></div>
+            <div class="barrier-row"><span class="barrier-label">支付与交易保护</span><span class="barrier-track"><span class="barrier-fill" style="--value:87.5%"></span></span><span class="barrier-score">35</span></div>
+            <div class="barrier-row"><span class="barrier-label">卖家可信度</span><span class="barrier-track"><span class="barrier-fill" style="--value:60%"></span></span><span class="barrier-score">24</span></div>
+            <div class="barrier-row"><span class="barrier-label">价格透明度</span><span class="barrier-track"><span class="barrier-fill" style="--value:50%"></span></span><span class="barrier-score">20</span></div>
+            <div class="barrier-row"><span class="barrier-label">补货与稀缺焦虑</span><span class="barrier-track"><span class="barrier-fill" style="--value:37.5%"></span></span><span class="barrier-score">15</span></div>
+            <div class="barrier-row"><span class="barrier-label">收藏与社区身份</span><span class="barrier-track"><span class="barrier-fill" style="--value:30%"></span></span><span class="barrier-score">12</span></div>
+            <p class="source-note">Source: <a href="pain_point_coding.csv">pain_point_coding.csv</a>; 19 public evidence records; author coding.</p>
+          </div>
+
+          <div class="decision-stack" aria-label="数据到运营决策">
+            <div class="decision"><div class="decision-key">40<br>真假</div><div class="decision-copy"><strong>认证信息前置</strong><p>发布清单、真假对比内容与商品认证状态。</p></div></div>
+            <div class="decision"><div class="decision-key">35<br>交易</div><div class="decision-copy"><strong>保护流程可视化</strong><p>支付托管、物流追踪、退款与争议入口。</p></div></div>
+            <div class="decision"><div class="decision-key">24<br>卖家</div><div class="decision-copy"><strong>建立信用档案</strong><p>身份、历史交易、发货速度和纠纷记录。</p></div></div>
+            <div class="decision"><div class="decision-key">20<br>价格</div><div class="decision-copy"><strong>降低溢价焦虑</strong><p>官方原价、近期成交区间与在售分布。</p></div></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="band soft" id="strategy">
+      <section class="section report">
+        <div class="section-head">
+          <div><p class="kicker">06 · Competitor Strategy</p><h2>内容能力与交易保障的组合机会</h2></div>
+          <p class="section-lead">竞品矩阵以内容/社群能力和交易保障能力为两条轴。评分依据公开产品机制和平台规则，用于发现结构差异，而不是官方排名。</p>
+        </div>
+
+        <div class="matrix-layout">
+          <div>
+            <div class="matrix" role="img" aria-label="竞品内容社区能力与交易保障能力矩阵">
+              <span class="axis-y">内容与社群能力由低到高</span>
+              <span class="axis-x">交易保障能力由低到高 →</span>
+              <span class="quadrant-label top-left">社区强 · 保障弱</span>
+              <span class="quadrant-label bottom-left">内容弱 · 保障弱</span>
+              <span class="quadrant-label bottom-right">保障强 · 社区弱</span>
+              <div class="point reddit"><span class="point-dot"></span><span class="point-label">Reddit / Discord</span></div>
+              <div class="point mercari"><span class="point-dot"></span><span class="point-label">Mercari</span></div>
+              <div class="point tiktok"><span class="point-dot"></span><span class="point-label">TikTok Shop</span></div>
+              <div class="point whatnot"><span class="point-dot"></span><span class="point-label">Whatnot</span></div>
+              <div class="point target"><span class="point-dot"></span><span class="point-label">策略方向</span></div>
+            </div>
+            <p class="source-note">Source: Whatnot、Mercari 官方规则；TikTok Shop 公开页面；Reddit/Discord 社区观察。矩阵为本项目四维标准化评分。</p>
+          </div>
+          <div class="competitor-list">
+            <article class="competitor"><div class="competitor-head"><strong>Mercari</strong><span>交易基础设施</span></div><p>发布与支付流程成熟，但潮玩品类身份和内容社区相对有限。</p></article>
+            <article class="competitor"><div class="competitor-head"><strong>Whatnot</strong><span>直播 + 保障</span></div><p>互动交易和保护机制兼具，适合即时成交。</p></article>
+            <article class="competitor"><div class="competitor-head"><strong>TikTok Shop</strong><span>内容发现</span></div><p>种草和官方供给强，用户间二手流转能力有限。</p></article>
+            <article class="competitor"><div class="competitor-head"><strong>Reddit / Discord</strong><span>社区信任</span></div><p>讨论真实、兴趣密度高，缺少标准化支付和争议处理。</p></article>
+            <article class="competitor"><div class="competitor-head"><strong>策略方向</strong><span>Trust-led C2C</span></div><p>连接收藏身份、商品证明、价格信息与受保护交易。</p></article>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="band dark">
+      <section class="section report">
+        <div class="section-head">
+          <div><p class="kicker">07 · Trust Engine</p><h2>五层信任机制</h2></div>
+          <p class="section-lead">用户问题不只转化为内容选题，也进入产品信息结构。五层机制分别回答“商品、卖家、价格、交易和记录是否可信”。</p>
+        </div>
+
+        <div class="trust-engine" aria-label="Trust Engine 模型">
+          <article class="trust-node"><span>LAYER 01</span><h3>商品可信</h3><p>QR、全息标识、UV 标记和包装细节上传清单。</p></article>
+          <article class="trust-node"><span>LAYER 02</span><h3>卖家可信</h3><p>身份、历史成交、发货速度、取消与纠纷记录。</p></article>
+          <article class="trust-node"><span>LAYER 03</span><h3>价格可信</h3><p>官方原价、近期成交区间与不同状态价格差异。</p></article>
+          <article class="trust-node"><span>LAYER 04</span><h3>交易可信</h3><p>受保护支付、追踪、收货确认与争议处理。</p></article>
+          <article class="trust-node"><span>LAYER 05</span><h3>记录沉淀</h3><p>认证记录、收藏档案、信用积累与分享。</p></article>
+        </div>
+        <div class="loop-line" aria-label="信任增长循环">
+          <div class="loop-item">可信商品</div><div class="loop-item">安全交易</div><div class="loop-item">成功履约</div><div class="loop-item">信用沉淀</div><div class="loop-item">收藏分享</div><div class="loop-item">新用户进入</div>
+        </div>
+        <p class="source-note">Source: S03–S08 平台政策对标；Trust Engine 为本项目策略模型。</p>
+      </section>
+    </div>
+
+    <div class="band" id="operations">
+      <section class="section report">
+        <div class="section-head">
+          <div><p class="kicker">08 · Content Operations</p><h2>让数据决定内容任务</h2></div>
+          <p class="section-lead">12组内容主题与用户决策阶段一一对应。内容不只承担曝光，还需要回答比价、真假判断、交易安全和留存需求。</p>
+        </div>
+
+        <div class="content-model" aria-label="内容运营矩阵">
+          <div class="content-row header"><div class="content-cell">阶段</div><div class="content-cell">数据问题</div><div class="content-cell">内容任务</div><div class="content-cell">渠道</div><div class="content-cell">观察指标</div></div>
+          <div class="content-row"><div class="content-cell">Discover</div><div class="content-cell">补货与新品讨论</div><div class="content-cell">开箱、补货提醒、热门款介绍</div><div class="content-cell">TikTok / Reels</div><div class="content-cell">完播率、关注率</div></div>
+          <div class="content-row"><div class="content-cell">Compare</div><div class="content-cell">原价与二手溢价</div><div class="content-cell">价格区间、版本差异、避坑指南</div><div class="content-cell">TikTok / Instagram</div><div class="content-cell">收藏率、详情点击</div></div>
+          <div class="content-row"><div class="content-cell">Evaluate</div><div class="content-cell">真假风险得分最高</div><div class="content-cell">QR、全息标识、UV与包装对比</div><div class="content-cell">TikTok / Reddit</div><div class="content-cell">保存率、认证查看</div></div>
+          <div class="content-row"><div class="content-cell">Purchase</div><div class="content-cell">支付与履约风险</div><div class="content-cell">安全交易、物流、退款与争议流程</div><div class="content-cell">Reddit / App</div><div class="content-cell">结账流程查看率</div></div>
+          <div class="content-row"><div class="content-cell">Retain</div><div class="content-cell">收藏展示与补货需求</div><div class="content-cell">收藏墙、愿望单、UGC与AMA</div><div class="content-cell">Instagram / Discord</div><div class="content-cell">回访率、分享率</div></div>
+        </div>
+        <p class="source-note">Source: <a href="content_calendar.csv">content_calendar.csv</a>; S09–S17 社区、监管与创作者内容规范。</p>
+      </section>
+    </div>
+
+    <div class="band dark">
+      <section class="section report">
+        <div class="section-head">
+          <div><p class="kicker">09 · KOL/KOC Model</p><h2>从20位公开候选中筛选内容角色</h2></div>
+          <p class="section-lead">候选池不按粉丝数直接排序，而是看品类相关性、社区互动、市场匹配、信任教育能力和品牌安全。账号数据属于公开观察，实际合作前需要刷新。</p>
+        </div>
+
+        <div class="kol-layout">
+          <div class="weight-chart" data-animate>
+            <div class="chart-title" style="color:#fff">加权评分结构</div>
+            <div class="chart-subtitle" style="color:rgba(255,255,255,.58)">Weighted score = Σ dimension × weight</div>
+            <div class="weight-row"><span class="weight-label">品类相关性</span><span class="weight-track"><span class="weight-fill" style="--value:100%"></span></span><span class="weight-value">30%</span></div>
+            <div class="weight-row"><span class="weight-label">社区互动质量</span><span class="weight-track"><span class="weight-fill" style="--value:66.7%"></span></span><span class="weight-value">20%</span></div>
+            <div class="weight-row"><span class="weight-label">目标市场匹配</span><span class="weight-track"><span class="weight-fill" style="--value:66.7%"></span></span><span class="weight-value">20%</span></div>
+            <div class="weight-row"><span class="weight-label">信任教育能力</span><span class="weight-track"><span class="weight-fill" style="--value:66.7%"></span></span><span class="weight-value">20%</span></div>
+            <div class="weight-row"><span class="weight-label">品牌安全</span><span class="weight-track"><span class="weight-fill" style="--value:33.3%"></span></span><span class="weight-value">10%</span></div>
+          </div>
+
+          <div>
+            <div class="screening" aria-label="达人筛选结果">
+              <div class="screening-step"><strong>20</strong><span>公开候选池</span><p>收藏知识、开箱展示、补货资讯和生活方式四类账号。</p></div>
+              <div class="screening-step"><strong>4</strong><span>A级优先</span><p>综合得分 ≥80，适合知识和真假教育内容。</p></div>
+              <div class="screening-step"><strong>7</strong><span>B级测试</span><p>综合得分70–79，适合小范围内容适配观察。</p></div>
+            </div>
+            <div class="tier-row">
+              <div class="tier"><strong>知识型</strong><span>真假鉴定、购买清单</span></div>
+              <div class="tier"><strong>收藏型</strong><span>开箱、收藏墙、UGC</span></div>
+              <div class="tier"><strong>资讯型</strong><span>补货、价格、版本信息</span></div>
+            </div>
+          </div>
+        </div>
+        <p class="source-note">Source: <a href="kol_scoring_shortlist.csv">kol_scoring_shortlist.csv</a>; S17、S19 公开候选来源；得分为本项目人工编码。粉丝地域、近30天播放、报价和品牌安全需在正式触达前刷新。</p>
+      </section>
+    </div>
+
+    <div class="band soft" id="launch">
+      <section class="section report">
+        <div class="section-head">
+          <div><p class="kicker">10 · Launch & Referral</p><h2>四周完成渠道验证与用户裂变</h2></div>
+          <p class="section-lead">启动期不同时铺开所有渠道，而是先验证信任内容，再测试达人流量，随后接入用户邀请与社区留存。每周只放大通过质量指标的动作。</p>
+        </div>
+
+        <div class="launch-grid" aria-label="四周增长启动节奏">
+          <article class="launch-card"><span class="launch-week">Week 01 · Trust Content</span><h3>建立可信交易理由</h3><p>TikTok / Reels 发布真假辨别、价格对照和 Buyer Protection 内容，Reddit 收集高频追问。</p><em>观察：保存率、认证查看率</em></article>
+          <article class="launch-card"><span class="launch-week">Week 02 · Creator Test</span><h3>验证达人流量质量</h3><p>知识型 KOL 负责真假教育，收藏型 KOC 负责开箱与收藏墙，全部使用独立链接和统一 briefing。</p><em>观察：激活成本、愿望单率</em></article>
+          <article class="launch-card"><span class="launch-week">Week 03 · Referral</span><h3>启动“邀请收藏搭子”</h3><p>邀请人和新用户在完成认证资料及首次有效行为后解锁双边奖励，避免只奖励点击或注册。</p><em>观察：有效邀请率、首个行为率</em></article>
+          <article class="launch-card"><span class="launch-week">Week 04 · Community</span><h3>沉淀社群与复访</h3><p>Discord 建立鉴定、补货和交易帮助频道，Instagram 用 UGC 收藏墙推动分享与回访。</p><em>观察：D7 回访、UGC 分享率</em></article>
+        </div>
+
+        <h3 class="allocation-title">首轮试投预算分配</h3>
+        <div class="budget-allocation" aria-label="首轮试投预算分配模型">
+          <div class="budget-cell"><strong>35%</strong><span>知识型 KOL</span><small>真假教育与交易信任</small></div>
+          <div class="budget-cell"><strong>25%</strong><span>收藏型 KOC</span><small>开箱、收藏墙与真实场景</small></div>
+          <div class="budget-cell"><strong>20%</strong><span>裂变奖励</span><small>有效激活与首笔交易</small></div>
+          <div class="budget-cell"><strong>15%</strong><span>内容制作</span><small>短视频、对照图与落地页</small></div>
+          <div class="budget-cell"><strong>5%</strong><span>机动与风控</span><small>素材补充及异常处理</small></div>
+        </div>
+
+        <div class="referral-loop" aria-label="用户裂变转化路径">
+          <div class="referral-step"><span>01 · SHARE</span><strong>邀请收藏搭子</strong><p>邀请码、分享卡和来源标记。</p></div>
+          <div class="referral-step"><span>02 · VERIFY</span><strong>完成可信注册</strong><p>邮箱、设备与基础资料校验。</p></div>
+          <div class="referral-step"><span>03 · ACTIVATE</span><strong>首次有效行为</strong><p>收藏、愿望单或合规商品发布。</p></div>
+          <div class="referral-step"><span>04 · TRANSACT</span><strong>首笔受保护交易</strong><p>支付、追踪和收货确认完成。</p></div>
+          <div class="referral-step"><span>05 · REWARD</span><strong>双边奖励到账</strong><p>退款回收、设备去重和奖励上限。</p></div>
+        </div>
+        <p class="source-note">方案依据：Evidence Matrix、达人评分与用户路径；预算比例和裂变规则为首轮试投配置。</p>
+      </section>
+    </div>
+
+    <div class="band dark" id="delivery">
+      <section class="section report">
+        <div class="section-head">
+          <div><p class="kicker">11 · Cross-functional Delivery</p><h2>把增长策略拆成可交付任务</h2></div>
+          <p class="section-lead">增长方案只有进入产品、设计、客服、信任安全和履约流程才具备执行条件。协作地图明确每个团队的输入、交付物和反馈信号。</p>
+        </div>
+
+        <div class="delivery-grid" aria-label="跨团队协作地图">
+          <article class="delivery-card"><span>Growth</span><h3>渠道与实验</h3><p>制定内容 brief、达人名单、活动规则、专属链接与每周复盘结论。</p></article>
+          <article class="delivery-card"><span>Product</span><h3>信任与转化功能</h3><p>落地认证信息、卖家信用、近期成交价、邀请入口和关键事件埋点。</p></article>
+          <article class="delivery-card"><span>Design</span><h3>内容与页面表达</h3><p>统一短视频模板、真假对照图、裂变分享卡、落地页和保护流程图。</p></article>
+          <article class="delivery-card"><span>CS & Trust</span><h3>客服与风险闭环</h3><p>沉淀真假、退款、描述不符和物流异常 FAQ，并将工单问题回流产品。</p></article>
+          <article class="delivery-card"><span>Seller & Logistics</span><h3>供给与履约标准</h3><p>建立卖家发布清单、包装规范、发货 SLA、追踪要求与异常升级路径。</p></article>
+        </div>
+
+        <div class="handoff-bar" aria-label="项目推进节奏">
+          <div class="handoff-step"><strong>周一 · 数据诊断</strong><span>渠道、漏斗、工单与履约异常</span></div>
+          <div class="handoff-step"><strong>周二 · 方案评审</strong><span>确定本周优先级与负责人</span></div>
+          <div class="handoff-step"><strong>周三至周五 · 上线</strong><span>内容、页面、规则与事件检查</span></div>
+          <div class="handoff-step"><strong>下周一 · 复盘</strong><span>继续、调整、停止或扩大</span></div>
+        </div>
+        <p class="source-note">协作依据：由信任障碍、用户路径与指标框架拆解交付责任。</p>
+      </section>
+    </div>
+
+    <div class="band soft" id="measurement">
+      <section class="section report">
+        <div class="section-head">
+          <div><p class="kicker">12 · Measurement Design</p><h2>指标不是结果，而是运营判断工具</h2></div>
+          <p class="section-lead">指标树用于在产品上线后判断问题发生在获客、信任建立、交易还是质量环节；所有策略以受保护交易增长为目标，并设置纠纷、假货申诉与低质量邀请护栏。</p>
+        </div>
+
+        <div class="metric-tree" aria-label="增长指标树">
+          <article class="tree-node north-star"><span>North Star</span><h3>受保护交易数</h3><p>同时反映需求、信任与履约完成。</p></article>
+          <article class="tree-node"><span>Acquisition</span><h3>有效访问</h3><p>内容点击率、渠道访问与达人链接访问。</p></article>
+          <article class="tree-node"><span>Activation</span><h3>首次有效行为</h3><p>收藏、愿望单、搜索与认证信息查看。</p></article>
+          <article class="tree-node"><span>Trust</span><h3>认证资料完成</h3><p>衡量信任功能是否真正被采用。</p></article>
+          <article class="tree-node"><span>Conversion</span><h3>结账到支付</h3><p>识别价格、运费和支付流程阻力。</p></article>
+          <article class="tree-node"><span>Quality</span><h3>纠纷与假货申诉</h3><p>增长不能以牺牲交易质量为代价。</p></article>
+          <article class="tree-node"><span>Retention</span><h3>D7与愿望单回访</h3><p>观察收藏习惯和持续需求。</p></article>
+          <article class="tree-node"><span>Creator</span><h3>每激活用户成本</h3><p>评价达人不能只看播放量。</p></article>
+        </div>
+
+        <div class="review-grid" aria-label="指标复盘决策规则">
+          <div class="review-rule"><strong>点击高，激活低</strong><p>检查落地页是否解释认证、卖家信用和交易保护，而不是继续增加曝光。</p></div>
+          <div class="review-rule"><strong>激活高，结账低</strong><p>检查价格、运费、支付和争议说明，定位 Purchase 阶段阻力。</p></div>
+          <div class="review-rule"><strong>交易上升，纠纷同步上升</strong><p>停止放大，优先加强商品审核和卖家风险控制。</p></div>
+          <div class="review-rule"><strong>收藏高，访问低</strong><p>内容有信息价值，但 CTA 或入口表达需要调整。</p></div>
+        </div>
+        <p class="source-note">Source: <a href="kpi_framework.csv">kpi_framework.csv</a>; AARRR + trust guardrail framework designed for this research.</p>
+      </section>
+    </div>
+
+    <div class="band">
+      <section class="section report">
+        <div class="section-head">
+          <div><p class="kicker">13 · Prioritisation</p><h2>RICE 排出首轮策略顺序</h2></div>
+          <p class="section-lead">Reach、Impact、Confidence 与 Effort 基于证据强度和实施复杂度估算，用统一口径比较首轮方案的优先级。</p>
+        </div>
+        <div class="rice-table" aria-label="RICE 策略优先级">
+          <div class="rice-row header"><div class="rice-cell">#</div><div class="rice-cell">策略</div><div class="rice-cell">RICE</div><div class="rice-cell">排序依据</div></div>
+          <div class="rice-row"><div class="rice-cell">01</div><div class="rice-cell">真假辨别 TikTok 系列</div><div class="rice-cell">1260</div><div class="rice-cell">高覆盖、内容制作成本较低</div></div>
+          <div class="rice-row"><div class="rice-cell">02</div><div class="rice-cell">发布前认证清单</div><div class="rice-cell">1200</div><div class="rice-cell">直接回应最高优先级风险</div></div>
+          <div class="rice-row"><div class="rice-cell">03</div><div class="rice-cell">Buyer Protection 说明</div><div class="rice-cell">910</div><div class="rice-cell">接近付款节点、实施清晰</div></div>
+          <div class="rice-row"><div class="rice-cell">04</div><div class="rice-cell">Reddit 每周真假讨论</div><div class="rice-cell">683</div><div class="rice-cell">低成本收集问题与建立可信度</div></div>
+          <div class="rice-row"><div class="rice-cell">05</div><div class="rice-cell">卖家信用标识</div><div class="rice-cell">607</div><div class="rice-cell">降低 Evaluate 阶段不确定性</div></div>
+        </div>
+        <p class="source-note">Source: <a href="growth_experiment_backlog.csv">growth_experiment_backlog.csv</a>; RICE assumptions documented in the project dataset.</p>
+      </section>
+    </div>
+
+    <div class="band dark">
+      <section class="section report">
+        <div class="section-head">
+          <div><p class="kicker">14 · Research Output</p><h2>完整的研究闭环</h2></div>
+          <p class="section-lead">项目最终形成一套从公开证据、用户问题和模型判断，到增长执行、协作交付与上线测量的完整研究系统。</p>
+        </div>
+
+        <div class="final-loop" aria-label="项目逻辑闭环">
+          <div class="final-node"><span>01</span><strong>公开证据</strong><p>市场、监管、平台与社区资料。</p></div>
+          <div class="final-node"><span>02</span><strong>用户问题</strong><p>分层、路径与六类信任障碍。</p></div>
+          <div class="final-node"><span>03</span><strong>模型判断</strong><p>优先级、竞品与达人评分。</p></div>
+          <div class="final-node"><span>04</span><strong>增长执行</strong><p>社媒、达人、裂变与协作交付。</p></div>
+          <div class="final-node"><span>05</span><strong>指标设计</strong><p>AARRR、交易质量与预算效率。</p></div>
+          <div class="final-node"><span>06</span><strong>复盘规则</strong><p>根据数据决定调整、停止或放大。</p></div>
+        </div>
+
+        <div class="closing">
+          <strong>研究结论：海外潮玩二手交易的增长重点，是用可验证的信息降低用户从“喜欢”到“敢买”的决策阻力。</strong>
+          <a class="back-link" href="../../../">返回作品集</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">Independent growth research · Public sources are linked and access dates are retained in the Evidence Matrix.</footer>
+
+  <script>
+    const animated = document.querySelectorAll('[data-animate]');
+    const animationObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          animationObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    animated.forEach((item) => animationObserver.observe(item));
+
+    const navLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
+    const sections = navLinks
+      .map((link) => document.querySelector(link.getAttribute('href')))
+      .filter(Boolean);
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach((link) => {
+          link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
+        });
+      });
+    }, { rootMargin: '-25% 0px -65% 0px' });
+    sections.forEach((section) => navObserver.observe(section));
+  </script>
+</body>
+</html>

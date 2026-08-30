@@ -1,0 +1,1234 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ZUS Everywhere 新业务上市与 Instagram 内容增长案例：从 COFFIZZ 首发到多渠道零售。">
+  <title>ZUS Everywhere 新业务上市与 Instagram 内容增长</title>
+  <style>
+    :root {
+      --navy: #071a42;
+      --blue: #124bd6;
+      --blue-2: #2e6cff;
+      --sky: #dce9ff;
+      --orange: #ff8b3d;
+      --yellow: #f6c84c;
+      --pink: #ef5da8;
+      --green: #20a47c;
+      --ink: #15223a;
+      --muted: #62708a;
+      --line: #d9e1ee;
+      --soft: #f4f7fb;
+      --paper: #ffffff;
+      --page: #edf2f8;
+      --radius: 8px;
+      --shadow: 0 20px 60px rgba(7, 26, 66, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--page);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      letter-spacing: 0;
+    }
+
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+
+    .skip-link {
+      position: fixed;
+      top: 8px;
+      left: 8px;
+      z-index: 100;
+      transform: translateY(-160%);
+      padding: 8px 12px;
+      border-radius: 4px;
+      background: var(--paper);
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .skip-link:focus { transform: translateY(0); }
+
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 0 max(22px, calc((100vw - 1180px) / 2));
+      color: #fff;
+      background: rgba(7, 26, 66, 0.94);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .nav-brand::before {
+      content: "Z";
+      display: grid;
+      place-items: center;
+      width: 26px;
+      height: 26px;
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: 50%;
+      font-family: Georgia, serif;
+      font-size: 16px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .nav-links::-webkit-scrollbar { display: none; }
+
+    .nav-links a {
+      position: relative;
+      padding: 18px 0 16px;
+      color: rgba(255, 255, 255, 0.66);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      background: var(--yellow);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 180ms ease;
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover { color: #fff; }
+    .nav-links a.active::after { transform: scaleX(1); }
+
+    .hero {
+      position: relative;
+      min-height: min(760px, calc(100vh - 58px));
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      color: #fff;
+      background: var(--navy);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(4, 16, 43, 0.95) 0%, rgba(4, 16, 43, 0.78) 43%, rgba(4, 16, 43, 0.12) 78%),
+        linear-gradient(0deg, rgba(4, 16, 43, 0.7) 0%, rgba(4, 16, 43, 0) 50%),
+        url("evidence/coffizz-launch.jpg") center / cover no-repeat;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, calc(100% - 44px));
+      margin: 0 auto;
+      padding: 80px 0 58px;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--yellow);
+      font-size: 12px;
+      font-weight: 850;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      max-width: 860px;
+      margin-bottom: 20px;
+      font-size: clamp(42px, 6vw, 76px);
+      line-height: 1.02;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .hero-copy {
+      max-width: 700px;
+      margin-bottom: 26px;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: clamp(16px, 2vw, 21px);
+      line-height: 1.65;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .hero-meta span { display: inline-flex; align-items: center; gap: 8px; }
+    .hero-meta span::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--orange); }
+
+    .hero-source {
+      position: absolute;
+      right: max(22px, calc((100vw - 1180px) / 2));
+      bottom: 18px;
+      z-index: 2;
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 11px;
+    }
+
+    .hero-source a { color: #fff; }
+
+    .report {
+      width: min(1180px, calc(100% - 44px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 92px 0;
+      scroll-margin-top: 58px;
+    }
+
+    .section + .section { border-top: 1px solid var(--line); }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(220px, 0.62fr) minmax(0, 1.38fr);
+      gap: 52px;
+      align-items: start;
+      margin-bottom: 42px;
+    }
+
+    .kicker {
+      margin: 0 0 12px;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 850;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin-bottom: 0;
+      font-size: clamp(30px, 4vw, 50px);
+      line-height: 1.12;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      font-size: 20px;
+      line-height: 1.35;
+      font-weight: 850;
+      letter-spacing: 0;
+    }
+
+    .section-lead {
+      max-width: 720px;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.75;
+    }
+
+    .snapshot {
+      position: relative;
+      z-index: 3;
+      margin-top: -1px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .metric-strip {
+      width: min(1180px, calc(100% - 44px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .metric {
+      min-width: 0;
+      padding: 30px 24px 28px;
+      border-right: 1px solid var(--line);
+    }
+
+    .metric:last-child { border-right: 0; }
+
+    .metric-label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    .metric strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--navy);
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1;
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .metric p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+    .metric sup { color: var(--blue); font-size: 10px; }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+    }
+
+    .summary-panel {
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+    }
+
+    .summary-panel.dark {
+      color: #fff;
+      background: var(--navy);
+      border-color: var(--navy);
+    }
+
+    .summary-panel p:last-child { margin-bottom: 0; }
+    .summary-panel.dark p { color: rgba(255, 255, 255, 0.72); }
+
+    .role-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .role-item {
+      padding-top: 14px;
+      border-top: 2px solid var(--orange);
+    }
+
+    .role-item strong { display: block; margin-bottom: 4px; font-size: 14px; }
+    .role-item span { color: var(--muted); font-size: 13px; }
+
+    .business-path {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--paper);
+    }
+
+    .path-node {
+      position: relative;
+      min-height: 190px;
+      padding: 26px 24px;
+      border-right: 1px solid var(--line);
+    }
+
+    .path-node:last-child { border-right: 0; }
+    .path-node:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      top: 28px;
+      right: -13px;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      color: var(--blue);
+      background: var(--paper);
+      font-weight: 900;
+    }
+
+    .node-no {
+      display: block;
+      margin-bottom: 34px;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .path-node p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .problem {
+      padding: 24px;
+      border-top: 4px solid var(--orange);
+      background: var(--paper);
+      box-shadow: 0 10px 28px rgba(7, 26, 66, 0.06);
+    }
+
+    .problem:nth-child(2) { border-color: var(--blue-2); }
+    .problem:nth-child(3) { border-color: var(--green); }
+    .problem p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      margin-top: 42px;
+      border-top: 2px solid var(--navy);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 24px 22px 0 0;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      top: -8px;
+      left: 0;
+      width: 14px;
+      height: 14px;
+      border: 3px solid var(--page);
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 0 0 1px var(--blue);
+    }
+
+    .timeline-item time { color: var(--blue); font-size: 12px; font-weight: 850; }
+    .timeline-item strong { display: block; margin: 6px 0; }
+    .timeline-item p { margin: 0; color: var(--muted); font-size: 13px; }
+
+    .competitor-table,
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--paper);
+    }
+
+    .competitor-table th,
+    .competitor-table td,
+    .data-table th,
+    .data-table td {
+      padding: 18px 16px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      font-size: 13px;
+    }
+
+    .competitor-table th,
+    .data-table th {
+      color: var(--navy);
+      background: var(--sky);
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .competitor-table tr:last-child td,
+    .data-table tr:last-child td { border-bottom: 0; }
+
+    .competitor-table tr.focus td { background: #fff8e7; }
+    .brand-link { color: var(--blue); font-weight: 800; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+    .growth-model {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--paper);
+    }
+
+    .growth-stage {
+      min-height: 230px;
+      padding: 24px 18px;
+      border-right: 1px solid var(--line);
+    }
+
+    .growth-stage:last-child { border-right: 0; }
+    .growth-stage:nth-child(1) { border-top: 5px solid var(--blue); }
+    .growth-stage:nth-child(2) { border-top: 5px solid var(--blue-2); }
+    .growth-stage:nth-child(3) { border-top: 5px solid var(--pink); }
+    .growth-stage:nth-child(4) { border-top: 5px solid var(--orange); }
+    .growth-stage:nth-child(5) { border-top: 5px solid var(--yellow); }
+    .growth-stage:nth-child(6) { border-top: 5px solid var(--green); }
+
+    .growth-stage .stage-id { display: block; margin-bottom: 34px; color: var(--muted); font-size: 11px; font-weight: 850; }
+    .growth-stage h3 { font-size: 17px; }
+    .growth-stage p { margin-bottom: 18px; color: var(--muted); font-size: 12px; }
+    .growth-stage small { color: var(--navy); font-size: 11px; font-weight: 800; }
+
+    .model-caption {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .tabs::-webkit-scrollbar { display: none; }
+
+    .tab {
+      min-height: 42px;
+      padding: 10px 16px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      color: var(--muted);
+      background: var(--paper);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .tab[aria-selected="true"] {
+      color: #fff;
+      background: var(--navy);
+      border-color: var(--navy);
+    }
+
+    .tab-panel {
+      display: none;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .tab-panel.active { display: grid; }
+
+    .experiment-copy {
+      padding: 32px;
+      border-radius: var(--radius);
+      color: #fff;
+      background: var(--navy);
+    }
+
+    .experiment-copy .kicker { color: var(--yellow); }
+    .experiment-copy p { color: rgba(255,255,255,0.72); }
+
+    .experiment-steps {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--line);
+    }
+
+    .experiment-step { padding: 24px; background: var(--paper); }
+    .experiment-step span { display: block; margin-bottom: 8px; color: var(--blue); font-size: 11px; font-weight: 850; }
+    .experiment-step p { margin: 0; color: var(--muted); font-size: 13px; }
+
+    .matrix-wrap { overflow-x: auto; }
+
+    .content-matrix {
+      min-width: 840px;
+      display: grid;
+      grid-template-columns: 150px repeat(3, minmax(210px, 1fr));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--line);
+      gap: 1px;
+    }
+
+    .matrix-cell { min-height: 126px; padding: 20px; background: var(--paper); }
+    .matrix-head { min-height: auto; color: #fff; background: var(--navy); font-size: 12px; font-weight: 850; }
+    .matrix-axis { color: var(--navy); background: var(--sky); font-size: 13px; font-weight: 850; }
+    .matrix-cell strong { display: block; margin-bottom: 7px; font-size: 14px; }
+    .matrix-cell p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.55; }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 36px;
+    }
+
+    .media-figure {
+      position: relative;
+      min-height: 0;
+      aspect-ratio: 1;
+      margin: 0;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--paper);
+    }
+
+    .media-figure img { width: 100%; height: 100%; object-fit: cover; }
+    .media-figure.feed img { object-position: center top; }
+
+    .media-figure figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 38px 18px 14px;
+      color: #fff;
+      background: linear-gradient(0deg, rgba(7, 26, 66, 0.92), rgba(7, 26, 66, 0));
+      font-size: 12px;
+    }
+
+    .data-layout {
+      display: grid;
+      grid-template-columns: 0.78fr 1.22fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .metric-formulas {
+      display: grid;
+      gap: 10px;
+    }
+
+    .formula {
+      padding: 18px;
+      border-left: 4px solid var(--blue);
+      background: var(--paper);
+    }
+
+    .formula:nth-child(2) { border-color: var(--pink); }
+    .formula:nth-child(3) { border-color: var(--orange); }
+    .formula:nth-child(4) { border-color: var(--green); }
+    .formula strong { display: block; margin-bottom: 4px; font-size: 13px; }
+    .formula code { color: var(--muted); font-family: "SFMono-Regular", Consolas, monospace; font-size: 11px; }
+
+    .heatmap {
+      display: grid;
+      grid-template-columns: 1.4fr repeat(4, minmax(70px, 1fr));
+      gap: 1px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--line);
+    }
+
+    .heat-cell {
+      min-height: 58px;
+      display: grid;
+      place-items: center;
+      padding: 10px;
+      text-align: center;
+      background: var(--paper);
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    .heat-head { color: #fff; background: var(--navy); font-size: 11px; }
+    .heat-row { justify-items: start; color: var(--navy); background: var(--soft); }
+    .heat-high { color: var(--navy); background: #b9cef9; }
+    .heat-mid { color: var(--navy); background: #e2eaff; }
+    .heat-low { color: var(--muted); background: #f7f9fc; }
+
+    .decision-loop {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .decision {
+      position: relative;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+    }
+
+    .decision:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      right: -12px;
+      top: 50%;
+      z-index: 2;
+      color: var(--blue);
+      transform: translateY(-50%);
+      font-weight: 900;
+    }
+
+    .decision span { display: block; margin-bottom: 8px; color: var(--blue); font-size: 11px; font-weight: 850; }
+    .decision p { margin: 0; color: var(--muted); font-size: 12px; }
+
+    .result-band {
+      margin-top: 20px;
+      padding: 46px;
+      border-radius: var(--radius);
+      color: #fff;
+      background: var(--navy);
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 50px;
+      align-items: start;
+    }
+
+    .result-band h2 { color: #fff; }
+    .result-band p { color: rgba(255,255,255,0.7); }
+
+    .result-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .result-item {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 18px;
+      align-items: baseline;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.16);
+    }
+
+    .result-item:last-child { border-bottom: 0; }
+    .result-item strong { color: var(--yellow); font-size: 28px; line-height: 1; font-variant-numeric: tabular-nums; }
+    .result-item span { color: rgba(255,255,255,0.78); font-size: 13px; }
+
+    .output-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0 22px;
+      margin-top: 26px;
+    }
+
+    .output {
+      min-height: 0;
+      padding: 14px 0;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    .sources {
+      display: grid;
+      gap: 1px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--line);
+    }
+
+    .source {
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      gap: 16px;
+      align-items: center;
+      padding: 17px 18px;
+      text-decoration: none;
+      background: var(--paper);
+    }
+
+    .source:hover { background: var(--soft); }
+    .source-id { color: var(--blue); font-size: 12px; font-weight: 900; }
+    .source strong { display: block; margin-bottom: 2px; font-size: 13px; }
+    .source span { color: var(--muted); font-size: 11px; }
+    .source-arrow { color: var(--blue); font-size: 18px; }
+
+    footer {
+      padding: 34px 22px 42px;
+      color: rgba(255,255,255,0.58);
+      background: var(--navy);
+      text-align: center;
+      font-size: 11px;
+    }
+
+    :focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+
+    @media (max-width: 980px) {
+      .site-nav { padding-inline: 18px; }
+      .nav-brand span { display: none; }
+      .hero-source { right: 22px; }
+      .section-head { grid-template-columns: 1fr; gap: 18px; }
+      .summary-grid,
+      .data-layout,
+      .result-grid { grid-template-columns: 1fr; }
+      .media-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .media-figure.feed { grid-column: 1 / -1; min-height: 0; aspect-ratio: 16 / 7; }
+      .business-path { grid-template-columns: repeat(2, 1fr); }
+      .path-node:nth-child(2) { border-right: 0; }
+      .path-node:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .path-node:nth-child(2)::after { display: none; }
+      .growth-model { grid-template-columns: repeat(3, 1fr); }
+      .growth-stage:nth-child(3) { border-right: 0; }
+      .growth-stage:nth-child(-n+3) { border-bottom: 1px solid var(--line); }
+      .metric-strip { grid-template-columns: repeat(2, 1fr); }
+      .metric:nth-child(2) { border-right: 0; }
+      .metric:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .tab-panel { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 720px) {
+      .site-nav { height: 52px; }
+      .nav-links { gap: 14px; }
+      .nav-links a { padding-block: 15px 13px; }
+      .hero { min-height: 720px; }
+      .hero::before {
+        background:
+          linear-gradient(0deg, rgba(4, 16, 43, 0.97) 0%, rgba(4, 16, 43, 0.78) 56%, rgba(4, 16, 43, 0.18) 100%),
+          url("evidence/coffizz-launch.jpg") 64% center / cover no-repeat;
+      }
+      .hero-inner { width: min(100% - 30px, 1180px); padding-bottom: 72px; }
+      h1 { max-width: 570px; font-size: 44px; }
+      .hero-copy { font-size: 16px; }
+      .hero-source { left: 15px; right: 15px; text-align: right; }
+      .report,
+      .metric-strip { width: min(100% - 30px, 1180px); }
+      .section { padding: 66px 0; }
+      .section-head { margin-bottom: 28px; }
+      .section-lead { font-size: 16px; }
+      .problem-grid,
+      .media-grid,
+      .decision-loop { grid-template-columns: 1fr; }
+      .output-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 18px; }
+      .timeline { grid-template-columns: 1fr; border-top: 0; border-left: 2px solid var(--navy); margin-left: 8px; }
+      .timeline-item { padding: 0 0 28px 24px; }
+      .timeline-item::before { top: 2px; left: -8px; }
+      .growth-model { grid-template-columns: 1fr; }
+      .growth-stage { min-height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+      .growth-stage:last-child { border-bottom: 0; }
+      .growth-stage .stage-id { margin-bottom: 14px; }
+      .experiment-steps { grid-template-columns: 1fr; }
+      .media-figure { min-height: 0; }
+      .media-figure.feed { grid-column: auto; min-height: 0; aspect-ratio: 4 / 5; }
+      .heatmap { grid-template-columns: 1.25fr repeat(4, minmax(58px, 1fr)); }
+      .heat-cell { padding: 8px 5px; font-size: 10px; }
+      .decision:not(:last-child)::after { content: "↓"; top: auto; right: 50%; bottom: -17px; transform: translateX(50%); }
+      .result-band { padding: 30px 22px; }
+      .source { grid-template-columns: 40px 1fr; }
+      .source-arrow { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      .nav-links a:nth-child(2),
+      .nav-links a:nth-child(4) { display: none; }
+      .tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .tab { min-width: 0; padding: 10px 5px; white-space: normal; font-size: 11px; line-height: 1.3; }
+      .metric-strip { grid-template-columns: 1fr; }
+      .metric { border-right: 0; border-bottom: 1px solid var(--line); }
+      .metric:last-child { border-bottom: 0; }
+      .business-path { grid-template-columns: 1fr; }
+      .path-node { border-right: 0; border-bottom: 1px solid var(--line); }
+      .path-node:last-child { border-bottom: 0; }
+      .path-node::after { display: none; }
+      .role-list { grid-template-columns: 1fr; }
+      h1 { font-size: 34px; }
+      h2 { font-size: 31px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <nav class="site-nav" aria-label="项目章节">
+    <a class="nav-brand" href="#top"><span>ZUS Everywhere Growth Case</span></a>
+    <div class="nav-links">
+      <a href="#overview">概览</a>
+      <a href="#context">业务</a>
+      <a href="#model">模型</a>
+      <a href="#content">内容</a>
+      <a href="#data">数据</a>
+      <a href="#results">结果</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="hero-inner">
+      <p class="eyebrow">New Business Launch · Social Growth · 2024</p>
+      <h1>ZUS Everywhere<br>新业务上市与内容增长</h1>
+      <p class="hero-copy">从 COFFIZZ 首发到多渠道零售，用 Instagram 内容完成新品认知、产品理解、渠道承接与复盘优化。</p>
+      <div class="hero-meta">
+        <span>新品内容运营</span>
+        <span>Instagram 策划</span>
+        <span>英文文案</span>
+        <span>数据复盘</span>
+      </div>
+    </div>
+    <div class="hero-source">视觉来源：<a href="https://siakapkeli.my/articles/zus-coffee-perkenalkan-coffizz-kopi-berkarbonat-halal-dalam-tin-pertama-di-malaysia" target="_blank" rel="noreferrer">COFFIZZ 发布资料 ↗</a></div>
+  </header>
+
+  <aside class="snapshot" aria-label="项目关键数据">
+    <div class="metric-strip">
+      <div class="metric">
+        <span class="metric-label">Instagram 内容执行</span>
+        <strong>50</strong>
+        <p>参与策划、拍摄、剪辑及英文文案 <sup>S0</sup></p>
+      </div>
+      <div class="metric">
+        <span class="metric-label">内容复盘节奏</span>
+        <strong>15+</strong>
+        <p>平均每 3–4 条完成一次调整 <sup>S0</sup></p>
+      </div>
+      <div class="metric">
+        <span class="metric-label">项目期账号规模</span>
+        <strong>1.1w+</strong>
+        <p>新品账号冷启动阶段 <sup>S0</sup></p>
+      </div>
+      <div class="metric">
+        <span class="metric-label">COFFIZZ 首发</span>
+        <strong>10k / 10d</strong>
+        <p>10,000 盒限量装，10 天售罄 <sup>S2</sup></p>
+      </div>
+    </div>
+  </aside>
+
+  <main class="report" id="main">
+    <section class="section" id="overview">
+      <div class="section-head">
+        <div>
+          <p class="kicker">Executive Summary</p>
+          <h2>从门店品牌，走向随时随地的消费场景</h2>
+        </div>
+        <p class="section-lead">ZUS Everywhere 不是单一新品，而是 ZUS Coffee 在 2024 年从门店现制咖啡向 RTD、即溶咖啡、生活方式产品与电商零售延展的新业务线。内容运营的任务，是把主品牌信任转化为新品理解和购买行动。</p>
+      </div>
+
+      <div class="summary-grid">
+        <article class="summary-panel dark">
+          <p class="kicker">Project Thesis</p>
+          <h3>新品增长的阻力，不是缺少曝光，而是用户还不知道“为什么需要另一种 ZUS”。</h3>
+          <p>因此项目将内容路径拆成：建立品类认知、制造生活场景、回答购买问题、承接渠道行动，再把用户反馈带回下一轮内容。</p>
+        </article>
+        <article class="summary-panel">
+          <p class="kicker">Role & Scope</p>
+          <h3>项目职责</h3>
+          <div class="role-list">
+            <div class="role-item"><strong>竞品诊断</strong><span>账号定位、内容结构、CTA</span></div>
+            <div class="role-item"><strong>内容执行</strong><span>Instagram / Story / Reels</span></div>
+            <div class="role-item"><strong>英文表达</strong><span>Caption、活动与渠道文案</span></div>
+            <div class="role-item"><strong>数据复盘</strong><span>内容信号与下一轮调整</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="context">
+      <div class="section-head">
+        <div>
+          <p class="kicker">Business Context</p>
+          <h2>一个品牌扩张问题</h2>
+        </div>
+        <p class="section-lead">门店用户认识的是“现制咖啡”；ZUS Everywhere 要建立的是“在家、办公室、通勤和零售货架都能消费的 ZUS”。这要求内容同时完成品牌迁移、品类教育和渠道转化。</p>
+      </div>
+
+      <div class="business-path" aria-label="ZUS Everywhere 业务扩张模型">
+        <article class="path-node">
+          <span class="node-no">01 · BRAND EQUITY</span>
+          <h3>ZUS Coffee</h3>
+          <p>门店、App 与高性价比精品咖啡形成基础认知。</p>
+        </article>
+        <article class="path-node">
+          <span class="node-no">02 · CATEGORY</span>
+          <h3>Beyond Café</h3>
+          <p>RTD、即溶咖啡与生活方式产品延长消费场景。</p>
+        </article>
+        <article class="path-node">
+          <span class="node-no">03 · DISTRIBUTION</span>
+          <h3>Everywhere</h3>
+          <p>独立站、电商、便利店与商超承接购买。</p>
+        </article>
+        <article class="path-node">
+          <span class="node-no">04 · CONTENT</span>
+          <h3>Daily Relevance</h3>
+          <p>用产品、场景和用户内容建立持续关注理由。</p>
+        </article>
+      </div>
+
+      <div class="problem-grid">
+        <article class="problem"><h3>新品类理解</h3><p>用户不熟悉“气泡咖啡”，内容首先要解释产品是什么、怎么喝、适合谁。</p></article>
+        <article class="problem"><h3>品牌认知迁移</h3><p>用户认识门店 ZUS，但需要重新理解 Everywhere 独立产品线与使用理由。</p></article>
+        <article class="problem"><h3>渠道行动承接</h3><p>购买由单一门店扩展至独立站、电商与零售，内容必须明确回答“在哪里买”。</p></article>
+      </div>
+
+      <div class="timeline" aria-label="业务上市时间线">
+        <article class="timeline-item"><time>2019</time><strong>第一家 ZUS 门店</strong><p>建立门店与 App 驱动的咖啡品牌基础。<sup>S1</sup></p></article>
+        <article class="timeline-item"><time>JAN 2024</time><strong>ZUS Goes Beyond Café</strong><p>正式进入 RTD 与即溶咖啡业务。<sup>S1</sup></p></article>
+        <article class="timeline-item"><time>FEB 2024</time><strong>COFFIZZ 首发</strong><p>首款清真罐装气泡咖啡上线。<sup>S2</sup></p></article>
+        <article class="timeline-item"><time>10 DAYS</time><strong>首发限量售罄</strong><p>10,000 盒三罐装，折合约 30,000 罐。<sup>S2</sup></p></article>
+      </div>
+    </section>
+
+    <section class="section" id="benchmark">
+      <div class="section-head">
+        <div>
+          <p class="kicker">Market Diagnosis</p>
+          <h2>竞品不是视觉参考，而是渠道打法参考</h2>
+        </div>
+        <p class="section-lead">前期拆解马来西亚饮品品牌的 Instagram 角色：谁负责季节新品、谁擅长促销转化、谁用年轻语气打开分享。ZUS Everywhere 的机会，是把包装咖啡与“随时随地”场景绑定。</p>
+      </div>
+
+      <table class="competitor-table">
+        <thead><tr><th>账号</th><th>主要内容角色</th><th>主要承接入口</th><th>对项目的判断</th></tr></thead>
+        <tbody>
+          <tr><td><a class="brand-link" href="https://www.instagram.com/mystarbucks/" target="_blank" rel="noreferrer">Starbucks Malaysia ↗</a></td><td>季节新品、品牌生活方式、会员活动</td><td>门店 / App</td><td>品牌氛围强，但不适合直接复制到新品类教育。</td></tr>
+          <tr><td><a class="brand-link" href="https://www.instagram.com/tealiveasia/" target="_blank" rel="noreferrer">Tealive Asia ↗</a></td><td>促销、联名、KOL 与即时活动</td><td>门店 / 优惠活动</td><td>CTA 明确，适合参考活动节奏和行动引导。</td></tr>
+          <tr><td><a class="brand-link" href="https://www.instagram.com/gigicoffeemy/" target="_blank" rel="noreferrer">GIGI Coffee ↗</a></td><td>年轻语气、短视频与社交话题</td><td>门店 / 社交传播</td><td>分享性强，适合参考 Hook 与轻量互动。</td></tr>
+          <tr class="focus"><td><a class="brand-link" href="https://www.instagram.com/zus.originals/" target="_blank" rel="noreferrer">ZUS Everywhere ↗</a></td><td>产品教育、零售场景、生活方式与联名</td><td>独立站 / 电商 / 零售</td><td>建立“咖啡不只在门店”的独立消费理由。</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="model">
+      <div class="section-head">
+        <div>
+          <p class="kicker">Growth Model</p>
+          <h2>Content–Commerce Loop</h2>
+        </div>
+        <p class="section-lead">每种内容对应一个用户阶段和一组数据，而不是所有帖子都只看点赞。模型把内容从曝光工具变成通向购买与分享的连续路径。</p>
+      </div>
+
+      <div class="growth-model" aria-label="Content Commerce 增长漏斗">
+        <article class="growth-stage"><span class="stage-id">01 · DISCOVER</span><h3>被看见</h3><p>Reels、联名内容、视觉 Hook</p><small>Reach · Plays · New Followers</small></article>
+        <article class="growth-stage"><span class="stage-id">02 · UNDERSTAND</span><h3>被理解</h3><p>产品拆解、口味说明、FAQ</p><small>Saves · Profile Visits</small></article>
+        <article class="growth-stage"><span class="stage-id">03 · DESIRE</span><h3>被种草</h3><p>通勤、办公、学习与聚会</p><small>Shares · Comments</small></article>
+        <article class="growth-stage"><span class="stage-id">04 · LOCATE</span><h3>找到渠道</h3><p>Story 到货、零售地图、渠道提醒</p><small>Sticker Taps · Link Clicks</small></article>
+        <article class="growth-stage"><span class="stage-id">05 · PURCHASE</span><h3>形成购买</h3><p>首发限量、Bundle 与活动 CTA</p><small>Product Visits · Purchase Intent</small></article>
+        <article class="growth-stage"><span class="stage-id">06 · SHARE</span><h3>二次传播</h3><p>UGC、晒单、Repost 与联名</p><small>Mentions · UGC · Follow Rate</small></article>
+      </div>
+      <div class="model-caption"><span>主路径：品牌信任 → 产品理解 → 渠道行动</span><span>反馈路径：用户问题 → 下一轮内容</span></div>
+    </section>
+
+    <section class="section" id="content">
+      <div class="section-head">
+        <div>
+          <p class="kicker">Content Experiments</p>
+          <h2>三个内容实验，分别解决认知、场景与转化</h2>
+        </div>
+        <p class="section-lead">50 条内容不是平均分配，而是围绕业务阶段形成连续实验；每组实验都由业务假设、内容执行、数据观察与下一轮迭代组成。</p>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="内容实验">
+        <button class="tab" role="tab" aria-selected="true" aria-controls="experiment-1" id="tab-1">01 COFFIZZ 首发</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="experiment-2" id="tab-2">02 Everyday 场景</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="experiment-3" id="tab-3">03 Where to Buy</button>
+      </div>
+
+      <div class="tab-panel active" id="experiment-1" role="tabpanel" aria-labelledby="tab-1">
+        <article class="experiment-copy"><p class="kicker">Category Education</p><h3>先让用户理解“气泡咖啡是什么”</h3><p>围绕品类新奇感建立首发序列：悬念预热、产品揭晓、口味与饮用体验、使用场景、限量购买入口、售罄反馈。</p></article>
+        <div class="experiment-steps">
+          <div class="experiment-step"><span>HYPOTHESIS</span><p>用户会被新品吸引，但品类陌生会阻碍进一步行动。</p></div>
+          <div class="experiment-step"><span>CONTENT</span><p>产品特写、气泡感、轻咖啡因、冰饮方式与首发限量。</p></div>
+          <div class="experiment-step"><span>SIGNAL</span><p>保存、产品问题、主页访问和购买入口点击。</p></div>
+          <div class="experiment-step"><span>ITERATION</span><p>把高频问题沉淀为 FAQ、口味说明和 Story 回答。</p></div>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="experiment-2" role="tabpanel" aria-labelledby="tab-2" hidden>
+        <article class="experiment-copy"><p class="kicker">Scenario Seeding</p><h3>把产品从货架放进一天的生活</h3><p>围绕 morning commute、office desk、study break、weekend outing 与 home restock 建立使用理由。</p></article>
+        <div class="experiment-steps">
+          <div class="experiment-step"><span>HYPOTHESIS</span><p>场景比单纯产品图更容易形成分享和消费联想。</p></div>
+          <div class="experiment-step"><span>CONTENT</span><p>短视频 Hook、桌面布置、随手冰饮与朋友聚会。</p></div>
+          <div class="experiment-step"><span>SIGNAL</span><p>播放、分享、评论和新增关注。</p></div>
+          <div class="experiment-step"><span>ITERATION</span><p>保留高共鸣场景，缩短 Reels 前 3 秒产品露出。</p></div>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="experiment-3" role="tabpanel" aria-labelledby="tab-3" hidden>
+        <article class="experiment-copy"><p class="kicker">Channel Conversion</p><h3>用户产生兴趣后，立刻回答“在哪里买”</h3><p>将独立站、电商、便利店与商超到货信息固定为转化型内容，让账号成为购买路径的一部分。</p></article>
+        <div class="experiment-steps">
+          <div class="experiment-step"><span>HYPOTHESIS</span><p>重复出现的购买问题代表兴趣已经进入行动阶段。</p></div>
+          <div class="experiment-step"><span>CONTENT</span><p>到货提醒、零售清单、Story 链接与 Bundle CTA。</p></div>
+          <div class="experiment-step"><span>SIGNAL</span><p>Story 点击、主页链接点击和渠道询问。</p></div>
+          <div class="experiment-step"><span>ITERATION</span><p>建立 Where to Buy 固定模块，随渠道变化持续更新。</p></div>
+        </div>
+      </div>
+
+      <div class="matrix-wrap" style="margin-top: 42px;">
+        <div class="content-matrix" aria-label="3乘3内容矩阵">
+          <div class="matrix-cell matrix-head">目标 / 内容形式</div><div class="matrix-cell matrix-head">产品信息</div><div class="matrix-cell matrix-head">生活场景</div><div class="matrix-cell matrix-head">用户互动</div>
+          <div class="matrix-cell matrix-axis">新品认知</div><div class="matrix-cell"><strong>COFFIZZ 是什么</strong><p>品类、口味、包装与饮用方式。</p></div><div class="matrix-cell"><strong>Everywhere Moment</strong><p>通勤、办公、学习和外出。</p></div><div class="matrix-cell"><strong>Story Poll</strong><p>口味选择、饮用场景与用户问题。</p></div>
+          <div class="matrix-cell matrix-axis">种草转化</div><div class="matrix-cell"><strong>Decision Guide</strong><p>怎么选、哪里买、组合装与限量信息。</p></div><div class="matrix-cell"><strong>Reels Scenario</strong><p>用真实动作完成产品露出。</p></div><div class="matrix-cell"><strong>Comment CTA</strong><p>引导用户询问价格、渠道与活动。</p></div>
+          <div class="matrix-cell matrix-axis">复购传播</div><div class="matrix-cell"><strong>Restock Reminder</strong><p>到货、补货和新品系列更新。</p></div><div class="matrix-cell"><strong>Daily Ritual</strong><p>把一次消费变成可重复日常。</p></div><div class="matrix-cell"><strong>UGC / Repost</strong><p>晒单、tag 与品牌二次传播。</p></div>
+        </div>
+      </div>
+
+      <div class="media-grid">
+        <figure class="media-figure"><img src="evidence/coffizz-product.png" alt="COFFIZZ Original 24 罐产品包装" loading="lazy"><figcaption>官方产品视觉 · COFFIZZ Original 24 罐装 <sup>S3</sup></figcaption></figure>
+        <figure class="media-figure"><img src="evidence/coffizz-carton.png" alt="COFFIZZ Original 24 罐零售外箱" loading="lazy"><figcaption>官方零售视觉 · COFFIZZ 整箱包装 <sup>S3</sup></figcaption></figure>
+        <figure class="media-figure feed"><img src="../../works/covers/zus-everywhere.jpg" alt="项目期 ZUS Everywhere Instagram 内容版面" loading="lazy"><figcaption>项目期账号内容版面 · 产品、场景、活动与互动并行 <sup>S0</sup></figcaption></figure>
+      </div>
+    </section>
+
+    <section class="section" id="data">
+      <div class="section-head">
+        <div>
+          <p class="kicker">Data-led Operations</p>
+          <h2>数据决定下一轮内容，不负责装饰页面</h2>
+        </div>
+        <p class="section-lead">15+ 轮复盘将内容信号按用户阶段拆开：Reels 负责打开触达，Carousel 负责解释，Story 负责收集偏好与承接点击，UGC 负责分享和关注转化。</p>
+      </div>
+
+      <div class="data-layout">
+        <div class="metric-formulas">
+          <div class="formula"><strong>内容互动率</strong><code>(点赞 + 评论 + 保存 + 分享) ÷ 触达</code></div>
+          <div class="formula"><strong>有效兴趣率</strong><code>(保存 + 分享 + 主页访问) ÷ 触达</code></div>
+          <div class="formula"><strong>渠道点击率</strong><code>购买链接点击 ÷ 主页访问</code></div>
+          <div class="formula"><strong>关注转化率</strong><code>新增粉丝 ÷ 主页访问</code></div>
+        </div>
+
+        <div>
+          <div class="heatmap" aria-label="内容形式相对表现矩阵">
+            <div class="heat-cell heat-head">内容形式</div><div class="heat-cell heat-head">触达</div><div class="heat-cell heat-head">保存</div><div class="heat-cell heat-head">点击</div><div class="heat-cell heat-head">关注</div>
+            <div class="heat-cell heat-row">Reels 场景短片</div><div class="heat-cell heat-high">强</div><div class="heat-cell heat-mid">中</div><div class="heat-cell heat-low">弱</div><div class="heat-cell heat-mid">中</div>
+            <div class="heat-cell heat-row">产品 Carousel</div><div class="heat-cell heat-mid">中</div><div class="heat-cell heat-high">强</div><div class="heat-cell heat-mid">中</div><div class="heat-cell heat-mid">中</div>
+            <div class="heat-cell heat-row">Story 渠道提醒</div><div class="heat-cell heat-low">弱</div><div class="heat-cell heat-low">弱</div><div class="heat-cell heat-high">强</div><div class="heat-cell heat-low">弱</div>
+            <div class="heat-cell heat-row">UGC / 联名内容</div><div class="heat-cell heat-mid">中</div><div class="heat-cell heat-mid">中</div><div class="heat-cell heat-low">弱</div><div class="heat-cell heat-high">强</div>
+          </div>
+          <p style="margin: 10px 0 0; color: var(--muted); font-size: 11px;">相对表现归纳自项目期 15+ 轮内容复盘；用于判断内容角色，不作为公开平台绝对值。<sup>S0</sup></p>
+        </div>
+      </div>
+
+      <div class="decision-loop" aria-label="数据复盘闭环">
+        <article class="decision"><span>01 · OBSERVE</span><h3>读取信号</h3><p>触达、互动、保存、访问、点击与评论问题。</p></article>
+        <article class="decision"><span>02 · DIAGNOSE</span><h3>定位阻力</h3><p>判断问题发生在认知、兴趣还是渠道承接。</p></article>
+        <article class="decision"><span>03 · ADJUST</span><h3>调整内容</h3><p>修改 Hook、信息顺序、场景或 CTA。</p></article>
+        <article class="decision"><span>04 · RETEST</span><h3>进入下一轮</h3><p>平均每 3–4 条内容完成一次复盘。</p></article>
+      </div>
+
+      <table class="data-table" style="margin-top: 30px;">
+        <thead><tr><th>数据模式</th><th>运营判断</th><th>进入下一轮的动作</th></tr></thead>
+        <tbody>
+          <tr><td>Reels 触达和分享突出</td><td>生活场景适合打开新品曝光</td><td>保留高共鸣场景，加强前 3 秒产品 Hook。</td></tr>
+          <tr><td>产品说明内容保存集中</td><td>用户需要更完整的产品决策信息</td><td>增加口味选择、FAQ 与购买渠道。</td></tr>
+          <tr><td>Story 点击与渠道询问集中</td><td>用户兴趣已进入行动阶段</td><td>固定 Where to Buy 与到货提醒模块。</td></tr>
+          <tr><td>UGC / 联名带来关注转化</td><td>社交认同有助于扩大传播</td><td>增加用户 Repost、tag 与合作内容。</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="results">
+      <div class="result-band">
+        <div class="result-grid">
+          <div>
+            <p class="kicker">Outcome</p>
+            <h2>新品内容、渠道承接与复盘机制同时落地</h2>
+            <p>项目最终形成一条可持续运转的内容路径：新品预热 → 品类教育 → 场景种草 → 渠道承接 → 限量转化 → 用户反馈 → 下一轮优化。</p>
+            <div class="output-grid">
+              <div class="output">新品首发内容序列</div><div class="output">英文 Caption 模板</div><div class="output">Story 互动模板</div>
+              <div class="output">Reels 场景脚本</div><div class="output">Where to Buy 模块</div><div class="output">内容复盘指标表</div>
+            </div>
+          </div>
+          <div class="result-list">
+            <div class="result-item"><strong>50</strong><span>条 Instagram 内容，参与策划、拍摄、剪辑与英文文案。</span></div>
+            <div class="result-item"><strong>15+</strong><span>轮内容复盘，把用户信号持续带回选题与 CTA。</span></div>
+            <div class="result-item"><strong>1.1w+</strong><span>项目期账号粉丝规模，完成新品冷启动阶段内容建设。</span></div>
+            <div class="result-item"><strong>30k</strong><span>品牌首发限量装对应约 30,000 罐产品，10 天售罄。</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sources">
+      <div class="section-head">
+        <div><p class="kicker">Source Trail</p><h2>数据与资料来源</h2></div>
+        <p class="section-lead">业务节点和销售数据均可点击追溯；内容执行数据来自项目期工作记录。页面中的 30,000 罐与日均约 1,000 盒为基于公开首发数据的直接折算。</p>
+      </div>
+
+      <div class="sources">
+        <div class="source"><span class="source-id">S0</span><div><strong>项目期内容执行与复盘记录 · 2024</strong><span>参与完成 50 条内容、15+ 轮复盘；项目期账号粉丝规模 1.1w+</span></div><span class="source-arrow">—</span></div>
+        <a class="source" href="https://zuscoffee.com/bm/about-us/" target="_blank" rel="noreferrer"><span class="source-id">S1</span><div><strong>ZUS Coffee 官方品牌历程</strong><span>2019 首店；2024 年 1 月进入 RTD 与即溶咖啡业务</span></div><span class="source-arrow">↗</span></a>
+        <a class="source" href="https://siakapkeli.my/articles/zus-coffee-perkenalkan-coffizz-kopi-berkarbonat-halal-dalam-tin-pertama-di-malaysia" target="_blank" rel="noreferrer"><span class="source-id">S2</span><div><strong>COFFIZZ 首发资料 · 2024 年 2 月</strong><span>10,000 盒三罐装在 10 天内售罄</span></div><span class="source-arrow">↗</span></a>
+        <a class="source" href="https://shop.zuscoffee.com/products/coffizz%C2%AE-original" target="_blank" rel="noreferrer"><span class="source-id">S3</span><div><strong>ZUS 官方商店 · Coffizz Original</strong><span>产品信息、包装、零售渠道与规格</span></div><span class="source-arrow">↗</span></a>
+        <a class="source" href="https://linktr.ee/zuseverywhere" target="_blank" rel="noreferrer"><span class="source-id">S4</span><div><strong>ZUS Everywhere 官方渠道</strong><span>官方商店、Shopee、Lazada、TikTok 与社交账号</span></div><span class="source-arrow">↗</span></a>
+        <a class="source" href="https://www.instagram.com/zus.originals/" target="_blank" rel="noreferrer"><span class="source-id">S5</span><div><strong>ZUS Originals Instagram</strong><span>ZUS Everywhere 业务线当前官方社媒账号</span></div><span class="source-arrow">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>ZUS Everywhere Growth Operations Case · 2024 · Content, Commerce & Data Review</footer>
+
+  <script>
+    const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+    const panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => activateTab(index));
+      tab.addEventListener('keydown', (event) => {
+        if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+        event.preventDefault();
+        const next = event.key === 'ArrowRight'
+          ? (index + 1) % tabs.length
+          : (index - 1 + tabs.length) % tabs.length;
+        activateTab(next);
+        tabs[next].focus();
+      });
+    });
+
+    function activateTab(index) {
+      tabs.forEach((tab, tabIndex) => tab.setAttribute('aria-selected', String(tabIndex === index)));
+      panels.forEach((panel, panelIndex) => {
+        const active = panelIndex === index;
+        panel.classList.toggle('active', active);
+        panel.hidden = !active;
+      });
+    }
+
+    const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
+    const sections = navLinks
+      .map((link) => document.querySelector(link.getAttribute('href')))
+      .filter(Boolean);
+
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+      navLinks.forEach((link) => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${visible.target.id}`);
+      });
+    }, { rootMargin: '-20% 0px -65% 0px', threshold: [0.05, 0.2, 0.5] });
+
+    sections.forEach((section) => observer.observe(section));
+  </script>
+</body>
+</html>
