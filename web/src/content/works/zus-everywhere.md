@@ -2,8 +2,8 @@
 title: ZUS Everywhere 新业务上市与 Instagram 内容增长
 banner: works/covers/zus-everywhere.jpg
 year: 2024
-role: 新品内容运营 / Instagram 策划 / 英文文案 / 数据复盘
-tags: [新品上市, 内容增长, Instagram, 数据复盘, FMCG]
+role: 新品内容运营 / Instagram 策划 / 英文文案 / 渠道协同 / 数据复盘
+tags: [新品上市, 内容增长, Instagram, FamilyMart, 数据复盘, FMCG]
 link: projects/zus-everywhere/case_study.html
 ---
 
@@ -13,11 +13,11 @@ link: projects/zus-everywhere/case_study.html
 
 ## 业务目标
 
-以 Instagram 为核心内容阵地，建立从“认识新品”到“找到购买入口”的连续路径。首发产品 COFFIZZ 同时承担品类教育和新业务认知任务，内容需要回答产品是什么、为什么值得尝试、适合什么场景以及在哪里购买。
+以 Instagram 为核心内容阵地，建立从“认识新品”到“找到购买入口”的连续路径。首发产品 COFFIZZ 同时承担品类教育和新业务认知任务，内容需要回答产品是什么、为什么值得尝试、适合什么场景，以及如何承接线上首发与 FamilyMart 等线下零售入口。
 
 ## 我的职责
 
-参与新品内容定位、竞品 Instagram 拆解、英文 caption、Story / Reels 脚本、发布节奏与内容复盘；参与完成 50 条内容策划、拍摄、剪辑及英文文案，并进行 15+ 轮内容复盘与迭代。
+参与新品内容定位、竞品 Instagram 拆解、英文 caption、Story / Reels 脚本、发布节奏与内容复盘；配合线上首发及 FamilyMart 线下传播，参与完成 50 条内容策划、拍摄、剪辑及英文文案，并进行 15+ 轮内容复盘与迭代。
 
 ## 数据驱动路径
 
@@ -34,6 +34,7 @@ link: projects/zus-everywhere/case_study.html
 - 参与完成 50 条 Instagram 内容策划、拍摄、剪辑及英文文案
 - 完成 15+ 轮内容复盘与版本调整
 - 项目期账号粉丝规模达到 1.1w+
+- 配合新品线上首发与 FamilyMart 线下渠道传播，统一产品卖点、到货信息和发布节奏
 - COFFIZZ 首发 10,000 盒三罐限量装在 10 天内售罄，为品牌新业务上市结果
 
 ## 项目产出

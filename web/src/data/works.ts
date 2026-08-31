@@ -87,7 +87,7 @@ export const WORKS: Record<'zh' | 'en', WorksLang> = {
         id: 'project-2',
         no: '02',
         title: 'ZUS Everywhere 新业务上市与内容增长',
-        tagline: '新品上市｜Instagram｜内容实验｜数据复盘',
+        tagline: '新品上市｜Instagram｜英文内容｜渠道协同｜数据复盘',
         items: [
           {
             name: 'ZUS Everywhere 新业务上市与 Instagram 内容增长',
@@ -97,7 +97,7 @@ export const WORKS: Record<'zh' | 'en', WorksLang> = {
               '参与 ZUS 从门店咖啡向 RTD / FMCG 新业务延展的内容冷启动',
               '参与完成 50 条 Instagram 内容与 15+ 轮数据复盘迭代',
               '建立从新品认知、场景兴趣到购买入口的 Content–Commerce 路径',
-              '项目期账号粉丝规模达到 1.1w+；品牌首发结果为 10,000 盒 10 天售罄',
+              '配合线上首发与 FamilyMart 线下传播；项目期账号粉丝规模达到 1.1w+',
             ],
           },
         ],
@@ -105,18 +105,18 @@ export const WORKS: Record<'zh' | 'en', WorksLang> = {
       {
         id: 'project-3',
         no: '03',
-        title: 'AI资讯追踪App多渠道增长与用户激活',
-        tagline: '小红书增长｜KOL/KOC｜用户调研｜数据复盘',
+        title: 'AI资讯追踪App多渠道增长与转化复盘',
+        tagline: '价格调研｜漏斗分析｜KOL/KOC｜内容A/B测试｜预算优化',
         items: [
           {
-            name: 'AI资讯追踪 App 多渠道增长与用户激活',
+            name: 'AI资讯追踪 App 多渠道增长与转化复盘',
             meta: 'AI Information Product Multi-channel Growth',
             slug: 'ai-news-dashboard',
             tags: [
-              '十周累计约58万曝光、15,800次访问与1,438名可归因注册',
-              '筛选金融、科技小博主与低成本KOC，按周错峰验证流量质量',
-              '由渠道行为与88份有效问卷定位阻碍，形成3套拉新活动与3张核心物料',
-              '科技博主发布周新增注册环比提升50%、首次专题创建率相对提升15%',
+              '围绕“曝光—访问—注册—首次专题创建”拆解漏斗并搭建轻量运营看板',
+              '结合用户反馈与价格问卷，分析付费意愿、价格接受度及首次体验阻碍',
+              '筛选金融、AI垂类KOL/KOC，并对标题、首图与CTA开展内容A/B测试',
+              '投放期累计新增注册环比提升50%、首次专题创建率相对提升15%，据此优化渠道预算',
             ],
           },
         ],
@@ -158,7 +158,7 @@ export const WORKS: Record<'zh' | 'en', WorksLang> = {
         id: 'project-2',
         no: '02',
         title: 'ZUS Everywhere New Business Launch & Content Growth',
-        tagline: 'Product Launch · Instagram · Content Experiments · Data Review',
+        tagline: 'Product Launch · Instagram · English Content · Retail Coordination · Data Review',
         items: [
           {
             name: 'ZUS Everywhere New Business Launch & Instagram Growth',
@@ -168,7 +168,7 @@ export const WORKS: Record<'zh' | 'en', WorksLang> = {
               'Supported the content launch as ZUS expanded from cafes into RTD and FMCG products',
               'Contributed to 50 Instagram assets and 15+ rounds of performance-led iteration',
               'Built a Content–Commerce journey from product discovery to purchase access',
-              'Account reached 11k+ during the project; brand launch result: 10,000 boxes sold in 10 days',
+              'Supported online launch and FamilyMart retail communication; the account reached 11k+ during the project',
             ],
           },
         ],
@@ -176,18 +176,18 @@ export const WORKS: Record<'zh' | 'en', WorksLang> = {
       {
         id: 'project-3',
         no: '03',
-        title: 'AI Information App Multi-channel Growth & Activation',
-        tagline: 'Xiaohongshu · KOL/KOC · User Research · Growth Review',
+        title: 'AI Information App Multi-channel Growth & Conversion Review',
+        tagline: 'Pricing Research · Funnel Analysis · KOL/KOC · Content A/B Tests · Budget Review',
         items: [
           {
-            name: 'AI Information App Multi-channel Growth & Activation',
-            meta: 'AI资讯追踪App多渠道增长与用户激活',
+            name: 'AI Information App Multi-channel Growth & Conversion Review',
+            meta: 'AI资讯追踪App多渠道增长与转化复盘',
             slug: 'ai-news-dashboard',
             tags: [
-              'Generated about 580K impressions, 15,800 visits, and 1,438 attributable sign-ups in ten weeks',
-              'Screened finance and tech creators plus long-tail KOCs through staggered weekly trials',
-              'Used channel behavior and 88 valid surveys to design three acquisition campaigns and three core assets',
-              'Tech-creator launch week drove 50% WoW registration growth and a 15% relative lift in first-topic creation rate',
+              'Mapped the exposure-to-first-topic funnel and built a lightweight operations dashboard',
+              'Combined user feedback and pricing surveys to assess willingness to pay, acceptable pricing, and activation barriers',
+              'Screened finance and AI creators, then tested titles, covers, and CTAs across comparable windows',
+              'Campaign registrations increased 50% WoW and first-topic creation rate rose 15% relatively, informing budget reallocation',
             ],
           },
         ],

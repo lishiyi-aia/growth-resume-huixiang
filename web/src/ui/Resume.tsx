@@ -27,7 +27,7 @@ const RESUME: Record<'en' | 'zh', { title: string; entries: ResumeEntry[] }> = {
         points: [
           'Researched new product content and distilled messaging from user preferences, social feedback, and competitor performance.',
           'Contributed to 50 Instagram posts across planning, shooting, editing, English copywriting, and publishing.',
-          'Completed 15+ content review cycles, shifting strategy toward product features, consumption scenarios, and lifestyle; the account reached 11k+ followers during the project period.',
+          'Supported the online launch and FamilyMart retail communication, completing 15+ review cycles to optimize content by reach, engagement, and follower growth; the account reached 11k+ followers during the project period.',
         ],
       },
       {
@@ -54,10 +54,10 @@ const RESUME: Record<'en' | 'zh', { title: string; entries: ResumeEntry[] }> = {
         place: 'Beijing Sohu New Media',
         role: 'AI Product Operations Intern',
         points: [
-          'Researched AI news-tracking products and supported PRD, feature specs, and FAQ development using user feedback and data.',
-          'Built AI-assisted operations dashboards to identify drop-off points and product improvement opportunities.',
-          'Created 100+ WeChat, Xiaohongshu, and community posts, comparing channel and content performance through staggered weekly tests and consistent observation windows.',
-          'During the tech-creator launch week, new registrations rose 50% WoW and first-topic creation rate increased from 41.2% to 47.1%, an approximately 15% relative lift.',
+          'Organized user feedback and a pricing survey to assess core needs, willingness to pay, and acceptable price ranges, then planned touchpoints by user stage.',
+          'Tracked the exposure-to-first-topic funnel and built an AI-assisted operations dashboard to distinguish operational drop-offs from product issues.',
+          'Produced 100+ WeChat, Xiaohongshu, and community posts; screened finance and AI creators by audience fit, content relevance, engagement quality, and cost.',
+          'Tested titles, covers, and CTAs across comparable publishing windows. During the campaign period, cumulative new registrations increased 50% WoW and first-topic creation rate rose 15% relatively, informing channel budget reallocation.',
         ],
       },
     ],
@@ -80,7 +80,7 @@ const RESUME: Record<'en' | 'zh', { title: string; entries: ResumeEntry[] }> = {
         points: [
           '参与新品内容调研，结合用户偏好、社媒反馈与竞品表现提炼传播卖点。',
           '参与完成50条Instagram内容的选题、拍摄、剪辑、英文文案与发布。',
-          '完成15次以上内容复盘，推动内容转向“产品功能＋消费场景＋生活方式”，项目期账号粉丝规模达到1.1万以上。',
+          '配合新品线上首发及FamilyMart线下渠道传播，完成15+轮数据复盘并根据触达、互动与粉丝增长优化内容，项目期账号粉丝规模达到1.1万+。',
         ],
       },
       {
@@ -107,10 +107,10 @@ const RESUME: Record<'en' | 'zh', { title: string; entries: ResumeEntry[] }> = {
         place: '北京搜狐新媒体信息有限公司',
         role: 'AI产品运营实习生',
         points: [
-          '参与AI资讯追踪产品调研，结合用户反馈与数据协助撰写PRD、功能说明和FAQ。',
-          '运用AI辅助搭建运营分析看板，识别用户路径中的流失节点和产品优化问题。',
-          '输出100余篇公众号、小红书及社群内容，采用分周错峰测试和统一观察窗口，对比不同渠道及内容形式的注册与激活表现。',
-          '科技博主发布周新增注册环比提升50%，首次专题创建率由41.2%提升至47.1%，相对提升约15%。',
+          '整理用户反馈并开展价格问卷，分析核心需求、付费意愿与价格接受度，按用户使用阶段制定触达策略。',
+          '围绕“曝光—访问—注册—首次专题创建”跟踪核心指标，运用AI辅助搭建轻量运营看板，定位流失节点并区分运营与产品问题。',
+          '基于高频问题输出100+条公众号、小红书及社群内容；根据粉丝画像、内容垂直度及互动表现筛选金融、AI垂类KOL/KOC。',
+          '对标题、首图及CTA开展内容A/B测试；投放期累计新增注册环比提升50%、首次专题创建率相对提升15%，并根据投放效率优化渠道预算。',
         ],
       },
     ],
