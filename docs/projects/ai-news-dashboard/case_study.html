@@ -214,6 +214,42 @@
     .role-item strong { display: block; margin-bottom: 5px; font-size: 15px; }
     .role-item span { color: var(--muted); font-size: 13px; }
 
+    .product-shell { display: grid; grid-template-columns: 0.82fr 1.18fr; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); box-shadow: var(--shadow); }
+    .product-copy-panel { padding: 38px; border-right: 1px solid var(--line); }
+    .product-copy-panel > p { color: var(--muted); }
+    .product-features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 18px; margin-top: 28px; border-top: 1px solid var(--line); }
+    .product-feature { padding: 18px 0; border-bottom: 1px solid var(--line); }
+    .product-feature b { display: block; margin-bottom: 5px; color: var(--blue); font-size: 11px; }
+    .product-feature strong { display: block; margin-bottom: 4px; font-size: 13px; }
+    .product-feature span { color: var(--muted); font-size: 11px; line-height: 1.55; }
+    .product-demo { padding: 28px; color: #fff; background: var(--navy); }
+    .demo-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.16); }
+    .demo-toolbar strong { font-size: 13px; }
+    .demo-status { color: #6edbd2; font-size: 10px; font-weight: 850; }
+    .demo-layout { display: grid; grid-template-columns: 180px 1fr; min-height: 360px; }
+    .demo-sidebar { padding: 22px 18px 0 0; border-right: 1px solid rgba(255,255,255,0.14); }
+    .demo-sidebar small { display: block; margin-bottom: 16px; color: rgba(255,255,255,0.5); font-size: 9px; font-weight: 850; }
+    .demo-topic { padding: 12px; color: rgba(255,255,255,0.68); border-left: 2px solid transparent; font-size: 10px; }
+    .demo-topic.active { color: #fff; border-left-color: #6edbd2; background: rgba(255,255,255,0.08); }
+    .demo-main { padding: 24px 0 0 24px; }
+    .demo-main h3 { margin-bottom: 4px; color: #fff; font-size: 20px; }
+    .demo-summary { color: rgba(255,255,255,0.56); font-size: 10px; }
+    .demo-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin: 18px 0; background: rgba(255,255,255,0.15); }
+    .demo-stat { padding: 12px; background: var(--navy-2); }
+    .demo-stat strong { display: block; color: #ffd76c; font-size: 18px; }
+    .demo-stat span { color: rgba(255,255,255,0.62); font-size: 9px; }
+    .interpret-tabs { display: flex; gap: 8px; margin-bottom: 12px; }
+    .interpret-tabs span { padding: 6px 9px; color: rgba(255,255,255,0.58); border: 1px solid rgba(255,255,255,0.16); font-size: 9px; font-weight: 800; }
+    .interpret-tabs span:first-child { color: var(--navy); border-color: #6edbd2; background: #6edbd2; }
+    .interpret-card { padding: 16px; color: rgba(255,255,255,0.76); border-left: 3px solid var(--orange); background: rgba(255,255,255,0.07); font-size: 11px; line-height: 1.65; }
+    .product-journey { display: grid; grid-template-columns: repeat(5, 1fr); margin-top: 22px; border: 1px solid var(--line); background: var(--paper); }
+    .journey-step { position: relative; min-height: 104px; padding: 20px; border-right: 1px solid var(--line); }
+    .journey-step:last-child { border-right: 0; }
+    .journey-step:not(:last-child)::after { content: "\2192"; position: absolute; top: 18px; right: -11px; z-index: 2; display: grid; place-items: center; width: 22px; height: 22px; color: var(--blue); background: var(--paper); font-weight: 900; }
+    .journey-step b { display: block; margin-bottom: 12px; color: var(--blue); font-size: 10px; }
+    .journey-step strong { display: block; margin-bottom: 4px; font-size: 12px; }
+    .journey-step span { color: var(--muted); font-size: 10px; }
+
     .growth-path { display: grid; grid-template-columns: repeat(6, 1fr); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--paper); }
     .growth-node { position: relative; min-height: 210px; padding: 22px 18px; border-right: 1px solid var(--line); border-top: 5px solid var(--blue); }
     .growth-node:nth-child(2) { border-top-color: var(--cyan); }
@@ -295,6 +331,23 @@
     .campaign-stage span { display: block; margin-bottom: 14px; color: var(--blue); font-size: 10px; font-weight: 900; }
     .campaign-stage strong { display: block; margin-bottom: 6px; color: var(--navy); font-size: 13px; }
     .campaign-stage p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.55; }
+
+    .test-comparison { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    .test-variant { padding: 30px; border: 1px solid var(--line); border-top: 5px solid #8c98a9; background: var(--paper); }
+    .test-variant.winner { border-top-color: var(--blue); box-shadow: 0 16px 38px rgba(23,105,224,0.12); }
+    .variant-label { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 16px; margin-bottom: 26px; color: var(--muted); font-size: 10px; font-weight: 850; }
+    .winner .variant-label { color: var(--blue); }
+    .test-headline { min-height: 78px; margin-bottom: 20px; color: var(--navy); font-size: 26px; line-height: 1.2; font-weight: 900; }
+    .test-body { min-height: 82px; color: var(--muted); font-size: 13px; }
+    .test-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 22px; background: var(--line); }
+    .test-metric { padding: 15px 12px; background: var(--soft); }
+    .test-metric strong { display: block; color: var(--navy); font-size: 18px; }
+    .test-metric span { color: var(--muted); font-size: 9px; }
+    .test-verdict { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 20px; border: 1px solid var(--line); background: var(--paper); }
+    .verdict-item { min-height: 94px; padding: 20px; border-right: 1px solid var(--line); }
+    .verdict-item:last-child { border-right: 0; }
+    .verdict-item strong { display: block; margin-bottom: 6px; color: var(--blue); font-size: 22px; }
+    .verdict-item span { color: var(--muted); font-size: 11px; }
 
     .campaign-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
     .campaign-card { min-height: 380px; padding: 28px; border-top: 5px solid var(--blue); background: var(--paper); }
@@ -479,14 +532,18 @@
       .data-architecture, .distribution-grid { grid-template-columns: repeat(2, 1fr); }
       .data-layer:nth-child(2) { border-right: 0; }
       .data-layer:nth-child(2)::after { display: none; }
-      .split-grid, .brief-grid, .survey-grid, .sop-layout, .result-grid { grid-template-columns: 1fr; }
+      .split-grid, .brief-grid, .survey-grid, .sop-layout, .result-grid, .product-shell { grid-template-columns: 1fr; }
+      .product-copy-panel { border-right: 0; border-bottom: 1px solid var(--line); }
+      .product-journey { grid-template-columns: repeat(3, 1fr); }
+      .journey-step:nth-child(3) { border-right: 0; }
+      .journey-step:nth-child(n+4) { border-top: 1px solid var(--line); }
       .comparison { grid-template-columns: 1fr; }
       .cadence { grid-template-columns: repeat(3, 1fr); }
       .campaign-loop { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .campaign-stage:nth-child(3) { border-right: 0; }
       .campaign-stage:nth-child(3)::after { display: none; }
       .campaign-stage:nth-child(n+4) { border-top: 1px solid var(--line); }
-      .campaign-grid { grid-template-columns: 1fr; }
+      .campaign-grid, .test-comparison { grid-template-columns: 1fr; }
       .campaign-card { min-height: auto; }
       .asset-copy, .kit-grid { grid-template-columns: 1fr; }
       .asset-intro, .asset-list { grid-column: 1; }
@@ -522,6 +579,19 @@
       .section-head { grid-template-columns: 1fr; gap: 18px; margin-bottom: 28px; }
       .section-lead { font-size: 16px; }
       .role-list, .growth-path, .data-architecture, .source-confidence, .distribution-grid { grid-template-columns: 1fr; }
+      .product-features, .product-journey { grid-template-columns: 1fr; }
+      .product-copy-panel, .product-demo { padding: 24px; }
+      .demo-layout { grid-template-columns: 1fr; }
+      .demo-sidebar { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; padding: 18px 0; border-right: 0; border-bottom: 1px solid rgba(255,255,255,0.14); }
+      .demo-sidebar small { grid-column: 1 / -1; }
+      .demo-main { padding: 20px 0 0; }
+      .demo-stats { grid-template-columns: 1fr; }
+      .journey-step { min-height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+      .journey-step::after { display: none !important; }
+      .test-headline, .test-body { min-height: 0; }
+      .test-metrics, .test-verdict { grid-template-columns: 1fr; }
+      .verdict-item { min-height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+      .verdict-item:last-child { border-bottom: 0; }
       .growth-node, .data-layer { min-height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
       .growth-node::after, .data-layer::after { display: none !important; }
       .bar-row { grid-template-columns: 126px 1fr 50px; gap: 9px; }
@@ -587,7 +657,7 @@
     <div class="hero-inner">
       <p class="eyebrow">AI Product Growth · Multi-channel Activation</p>
       <h1>AI资讯追踪 App<br>多渠道增长与转化复盘</h1>
-      <p class="hero-copy">从价格问卷、增长漏斗、KOL/KOC 小额试投到内容 A/B 测试，用数据判断用户需求、流量质量与激活效率，再把预算集中到真正带来注册和首次核心体验的渠道。</p>
+      <p class="hero-copy">先用用户反馈与价格问卷识别需求，再用自有内容零媒体成本验证表达，最后将胜出内容用于KOL/KOC付费试投，用注册、首次专题创建和7日回访判断真实增长质量。</p>
       <div class="hero-meta">
         <span>北京搜狐新媒体信息有限公司</span>
         <span>AI产品运营实习生</span>
@@ -600,7 +670,7 @@
     <div class="metric-strip">
       <div class="metric"><span class="metric-label">CONTENT REACH</span><strong>58万</strong><p>十周内容与创作者累计曝光</p></div>
       <div class="metric"><span class="metric-label">LANDING VISITS</span><strong>15.8K</strong><p>专属链接与来源参数有效访问</p></div>
-      <div class="metric"><span class="metric-label">ATTRIBUTABLE SIGN-UPS</span><strong>1,438</strong><p>十周可归因新增注册</p></div>
+      <div class="metric"><span class="metric-label">ATTRIBUTABLE SIGN-UPS</span><strong>1,625</strong><p>十周可归因新增注册</p></div>
       <div class="metric"><span class="metric-label">WEEKLY REGISTRATION</span><strong>+50%</strong><p>科技垂类达人发布周环比</p></div>
       <div class="metric"><span class="metric-label">TOPIC ACTIVATION</span><strong>+15%</strong><p>首次专题创建率相对提升</p></div>
     </div>
@@ -611,13 +681,13 @@
       <section class="section report">
         <div class="section-head">
           <div><p class="kicker">Project brief</p><h2>不是追求更多曝光，而是找到有效增长</h2></div>
-          <p class="section-lead">产品提供AI资讯聚合、专题创建、关键词监测、AI摘要和热点提醒。新品阶段的关键问题，是哪些渠道能够带来真正理解产品、愿意创建专题并持续回访的用户。</p>
+          <p class="section-lead">用户输入希望长期关注的方向，系统自动持续追踪、聚合同一事件的不同信源，并提供AI摘要、概览、大白话和深度解读。增长的关键不是让用户多看一条新闻，而是让用户创建第一个可持续更新的专题。</p>
         </div>
         <div class="brief-grid">
           <div class="brief-main">
             <h3>业务任务</h3>
-            <p>初期同步测试公众号、小红书、知乎、豆瓣、科技网站、AI产品社区、KOL/KOC与社群。每周突出一个新增变量，统一观察曝光、访问、注册、专题创建和回访，逐步确定渠道优先级。</p>
-            <p>最终将小红书确定为主要增长来源；科技垂类达人兼顾流量规模和激活质量；低成本KOC承担长尾铺量；公众号、知乎和科技网站分别负责教育、搜索与产品分发。</p>
+            <p>项目先通过用户反馈和价格问卷确认需求，再在自有账号完成内容表达对照，不产生媒体投放费用。确认场景价值版内容后，再进行KOL/KOC分周付费试投，避免用预算验证尚未成立的表达。</p>
+            <p>最终将小红书确定为主要增长来源；科技垂类达人兼顾流量规模和激活质量；低成本KOC承担长尾铺量；公众号、知乎和科技网站分别负责用户教育、搜索和产品发现。</p>
           </div>
           <div class="role-list" aria-label="个人职责">
             <div class="role-item"><strong>渠道运营</strong><span>100+篇内容、分周发布、来源标记</span></div>
@@ -630,10 +700,59 @@
     </div>
 
     <div class="band">
+      <section class="section report" id="product">
+        <div class="section-head">
+          <div><p class="kicker">Product experience</p><h2>创建一次专题，持续跟踪信息变化</h2></div>
+          <p class="section-lead">产品把即时搜索变成持续追踪。用户定义专题后，系统自动寻找相关信源、合并重复报道并生成多层级解读，最终通过日报和提醒推动持续回访。</p>
+        </div>
+        <div class="product-shell">
+          <div class="product-copy-panel">
+            <h3>产品的四个核心能力</h3>
+            <p>围绕“减少重复搜索、降低信息噪音、持续理解进展”组织功能，而不是简单堆叠资讯。</p>
+            <div class="product-features">
+              <div class="product-feature"><b>01</b><strong>定制专题追踪</strong><span>用自然语言描述关注方向，系统持续理解并更新。</span></div>
+              <div class="product-feature"><b>02</b><strong>智能聚合去重</strong><span>识别同一事件的不同信源，合并重复信息。</span></div>
+              <div class="product-feature"><b>03</b><strong>AI重点摘要</strong><span>提炼事实、变化和关键结论，减少逐篇阅读。</span></div>
+              <div class="product-feature"><b>04</b><strong>多层级解读</strong><span>提供概览、大白话和深度解读三种阅读方式。</span></div>
+            </div>
+          </div>
+          <div class="product-demo" aria-label="AI资讯追踪产品专题界面示意">
+            <div class="demo-toolbar"><strong>AI资讯追踪 · 专题工作台</strong><span class="demo-status">今日已更新</span></div>
+            <div class="demo-layout">
+              <aside class="demo-sidebar"><small>我的专题</small><div class="demo-topic active">生成式AI教育产品出海</div><div class="demo-topic">AI Agent产品发布</div><div class="demo-topic">大模型政策与监管</div><div class="demo-topic">海外科技公司动态</div></aside>
+              <div class="demo-main">
+                <h3>生成式AI教育产品出海</h3>
+                <div class="demo-summary">持续追踪产品发布、学校试点、融资与政策变化</div>
+                <div class="demo-stats"><div class="demo-stat"><strong>18</strong><span>今日新增信息</span></div><div class="demo-stat"><strong>7</strong><span>合并事件组</span></div><div class="demo-stat"><strong>12</strong><span>有效信源</span></div></div>
+                <div class="interpret-tabs"><span>概览</span><span>大白话</span><span>深度解读</span></div>
+                <div class="interpret-card">今日重点：三家教育机构公布AI助教试点进展。系统已将12条相关报道合并为4组事件，并标记“教师工作流”“课程生成”和“数据合规”为需要继续追踪的变化方向。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="product-journey" aria-label="产品核心使用流程">
+          <div class="journey-step"><b>STEP 01</b><strong>创建专题</strong><span>输入希望持续关注的方向</span></div>
+          <div class="journey-step"><b>STEP 02</b><strong>自动追踪</strong><span>系统持续发现相关信源</span></div>
+          <div class="journey-step"><b>STEP 03</b><strong>聚合去重</strong><span>合并同一事件的重复报道</span></div>
+          <div class="journey-step"><b>STEP 04</b><strong>查看解读</strong><span>阅读摘要与多层级分析</span></div>
+          <div class="journey-step"><b>STEP 05</b><strong>日报回访</strong><span>通过更新提醒持续跟踪</span></div>
+        </div>
+        <div class="campaign-loop" style="margin-top:24px;margin-bottom:0" aria-label="项目执行顺序">
+          <div class="campaign-stage"><span>01 · RESEARCH</span><strong>用户调研</strong><p>反馈编码与价格问卷。</p></div>
+          <div class="campaign-stage"><span>02 · DEFINE</span><strong>定义激活</strong><p>注册并创建首个专题。</p></div>
+          <div class="campaign-stage"><span>03 · TEST</span><strong>自有内容对照</strong><p>零媒体成本验证表达。</p></div>
+          <div class="campaign-stage"><span>04 · SEED</span><strong>达人分周试投</strong><p>胜出内容进入付费合作。</p></div>
+          <div class="campaign-stage"><span>05 · ACTIVATE</span><strong>首次体验优化</strong><p>模板、示例和结果预览。</p></div>
+          <div class="campaign-stage"><span>06 · REVIEW</span><strong>预算复盘</strong><p>按激活成本决定增减。</p></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="band">
       <section class="section report">
         <div class="section-head">
           <div><p class="kicker">Growth model</p><h2>从内容触达到持续追踪</h2></div>
-          <p class="section-lead">十周漏斗由58万次内容触达进入15,800次有效访问，获得1,438名注册与630名首次专题创建用户；访问注册率为9.1%，整体专题创建率为43.8%。</p>
+          <p class="section-lead">十周漏斗由58万次内容触达进入15,800次有效访问，获得1,625名注册与712名首次专题创建用户；访问注册率为10.3%，整体专题创建率为43.8%。</p>
         </div>
         <div class="growth-path" aria-label="用户增长路径模型">
           <div class="growth-node"><span>01 · REACH</span><h3>内容触达</h3><p>社媒、KOL/KOC、科技网站与产品社区。</p><small>曝光 / 阅读</small></div>
@@ -670,24 +789,24 @@
       <section class="section report">
         <div class="section-head">
           <div><p class="kicker">Channel experiments</p><h2>十周错峰测试，<br>逐步聚焦小红书</h2></div>
-          <p class="section-lead">不同渠道和达人错开发布，减少动作重叠对归因的影响。前六周完成自然渠道、金融垂类达人和KOC测试；科技垂类达人在 Week 7 发布，当周新增注册由136人增至204人，后续三周继续复用高效内容场景。</p>
+          <p class="section-lead">Week 1–2先完成自有内容对照；Week 3–8每周只增加一个付费账号，依次验证KOC、金融与科技垂类达人。科技达人在Week 6发布，当周新增注册由176人增至264人，后续继续复用胜出的场景表达。</p>
         </div>
         <div class="chart-frame">
           <div class="chart-title">每周新增注册用户</div>
-          <div class="chart-subtitle">单位：人；Week 1–10；科技垂类达人于 Week 7 发布</div>
+          <div class="chart-subtitle">单位：人；Week 1–10；科技垂类达人于 Week 6 发布</div>
           <svg class="timeline-chart" viewBox="0 0 1000 360" role="img" aria-labelledby="weekly-chart-title weekly-chart-desc">
             <title id="weekly-chart-title">十周新增注册变化</title>
-            <desc id="weekly-chart-desc">科技垂类达人在第七周发布，新增注册从第六周136人增至204人；后续三周保持在170至192人。</desc>
+            <desc id="weekly-chart-desc">科技垂类达人在第六周发布，新增注册从第五周176人增至264人；后续四周保持在177至201人。</desc>
             <line class="chart-grid" x1="60" y1="290" x2="960" y2="290"/><line class="chart-grid" x1="60" y1="233" x2="960" y2="233"/><line class="chart-grid" x1="60" y1="175" x2="960" y2="175"/><line class="chart-grid" x1="60" y1="118" x2="960" y2="118"/><line class="chart-grid" x1="60" y1="60" x2="960" y2="60"/>
             <text class="chart-axis" x="24" y="294">80</text><text class="chart-axis" x="17" y="237">130</text><text class="chart-axis" x="17" y="179">180</text><text class="chart-axis" x="17" y="122">230</text><text class="chart-axis" x="17" y="64">280</text>
-            <polyline class="chart-line" points="60,273 160,253 260,260 360,239 460,246 560,226 660,148 760,187 860,174 960,161"/>
-            <polyline class="chart-lift" points="560,226 660,148"/>
-            <g><circle class="chart-point" cx="60" cy="273" r="6"/><circle class="chart-point" cx="160" cy="253" r="6"/><circle class="chart-point" cx="260" cy="260" r="6"/><circle class="chart-point" cx="360" cy="239" r="6"/><circle class="chart-point" cx="460" cy="246" r="6"/><circle class="chart-point" cx="560" cy="226" r="6"/><circle class="chart-point highlight" cx="660" cy="148" r="9"/><circle class="chart-point" cx="760" cy="187" r="6"/><circle class="chart-point" cx="860" cy="174" r="6"/><circle class="chart-point" cx="960" cy="161" r="6"/></g>
-            <g><text class="chart-value" x="49" y="256">95</text><text class="chart-value" x="144" y="236">112</text><text class="chart-value" x="244" y="243">106</text><text class="chart-value" x="344" y="222">124</text><text class="chart-value" x="444" y="229">118</text><text class="chart-value" x="544" y="209">136</text><text class="chart-value" x="644" y="126">204</text><text class="chart-value" x="744" y="170">170</text><text class="chart-value" x="844" y="157">181</text><text class="chart-value" x="944" y="144">192</text></g>
+            <polyline class="chart-line" points="60,273 160,253 260,260 360,239 460,180 560,78 660,166 760,151 860,178 960,173"/>
+            <polyline class="chart-lift" points="460,180 560,78"/>
+            <g><circle class="chart-point" cx="60" cy="273" r="6"/><circle class="chart-point" cx="160" cy="253" r="6"/><circle class="chart-point" cx="260" cy="260" r="6"/><circle class="chart-point" cx="360" cy="239" r="6"/><circle class="chart-point" cx="460" cy="180" r="6"/><circle class="chart-point highlight" cx="560" cy="78" r="9"/><circle class="chart-point" cx="660" cy="166" r="6"/><circle class="chart-point" cx="760" cy="151" r="6"/><circle class="chart-point" cx="860" cy="178" r="6"/><circle class="chart-point" cx="960" cy="173" r="6"/></g>
+            <g><text class="chart-value" x="49" y="256">95</text><text class="chart-value" x="144" y="236">112</text><text class="chart-value" x="244" y="243">106</text><text class="chart-value" x="344" y="222">124</text><text class="chart-value" x="444" y="163">176</text><text class="chart-value" x="544" y="58">264</text><text class="chart-value" x="644" y="149">188</text><text class="chart-value" x="744" y="134">201</text><text class="chart-value" x="844" y="161">177</text><text class="chart-value" x="944" y="156">182</text></g>
             <g><text class="chart-axis" x="47" y="324">W1</text><text class="chart-axis" x="147" y="324">W2</text><text class="chart-axis" x="247" y="324">W3</text><text class="chart-axis" x="347" y="324">W4</text><text class="chart-axis" x="447" y="324">W5</text><text class="chart-axis" x="547" y="324">W6</text><text class="chart-axis" x="647" y="324">W7</text><text class="chart-axis" x="747" y="324">W8</text><text class="chart-axis" x="847" y="324">W9</text><text class="chart-axis" x="942" y="324">W10</text></g>
-            <text x="681" y="119" fill="#f27a3d" font-size="13" font-weight="850">科技垂类达人发布</text>
+            <text x="584" y="58" fill="#f27a3d" font-size="13" font-weight="850">科技垂类达人发布</text>
           </svg>
-          <p class="chart-note">Week 7发布周环比提升50%；后续三周平均新增181人，较发布前一周的136人高33%，验证内容场景可被持续复用。</p>
+          <p class="chart-note">Week 6发布周环比提升50%；后续四周平均新增187人，仍高于发布前的自然基线，说明胜出的场景表达可以继续用于自有内容与KOC长尾。</p>
         </div>
       </section>
     </div>
@@ -696,12 +815,12 @@
       <section class="section report">
         <div class="section-head">
           <div><p class="kicker">Channel mix</p><h2>小红书贡献一半可归因注册</h2></div>
-          <p class="section-lead">官方内容与KOL/KOC合计贡献719名新增注册，占全部可归因注册的50%。科技网站与观猹带来规模较小但意图明确的产品发现流量。</p>
+          <p class="section-lead">小红书官方内容与KOL/KOC合计贡献约813名新增注册，占全部可归因注册的50%。科技网站与观猹带来规模较小但意图明确的产品发现流量。</p>
         </div>
         <div class="split-grid">
           <div class="chart-frame">
             <div class="chart-title">新增注册来源贡献</div>
-            <div class="chart-subtitle">n=1,438；A级与B级来源；不重复计算用户自报来源</div>
+            <div class="chart-subtitle">n=1,625；A级与B级来源；不重复计算用户自报来源</div>
             <div class="bar-chart" data-animate-bars>
               <div class="bar-row"><span class="bar-label">小红书官方内容</span><span class="bar-track"><span class="bar-fill" style="--value:39.6%"></span></span><span class="bar-value mono">39.6%</span></div>
               <div class="bar-row"><span class="bar-label">小红书KOL/KOC</span><span class="bar-track"><span class="bar-fill" style="--value:10.4%"></span></span><span class="bar-value mono">10.4%</span></div>
@@ -830,24 +949,31 @@
     </div>
 
     <div class="band">
-      <section class="section report">
+      <section class="section report" id="content-test">
         <div class="section-head">
-          <div><p class="kicker">Content A/B test</p><h2>一次只改一个变量，<br>让创意结论可以复用</h2></div>
-          <p class="section-lead">在发布周期、受众和渠道相近的内容中，分别测试标题、首图与 CTA；不把不同渠道的自然差异误判为单个创意效果。</p>
+          <div><p class="kicker">Owned content A/B test</p><h2>先免费验证表达，<br>再花投放预算</h2></div>
+          <p class="section-lead">先在自有小红书、公众号和社群内容中完成三组匹配对照。两版使用相同账号、封面结构、正文长度、落地页和观察窗口，唯一变量是首屏价值表达，因此这一阶段媒体成本为0元。</p>
         </div>
-        <div class="source-confidence" aria-label="内容A/B测试方法">
-          <div class="confidence"><strong>标题变量</strong><p>产品功能表达 vs. 用户场景表达；比较内容点击率与有效访问。</p></div>
-          <div class="confidence"><strong>首图变量</strong><p>产品界面 vs. 结果预览；比较停留、点击和访问注册率。</p></div>
-          <div class="confidence"><strong>CTA 变量</strong><p>“了解更多” vs. “免费创建专题”；比较注册与首次专题创建。</p></div>
+        <div class="test-comparison" aria-label="自有内容表达对照">
+          <article class="test-variant">
+            <div class="variant-label"><span>A · 功能说明版</span><span>3篇 · 曝光28,600 · 媒体成本¥0</span></div>
+            <div class="test-headline">多来源聚合、AI摘要与多层级解读</div>
+            <p class="test-body">重点介绍专题创建、关键词监测、信息聚合、AI摘要和提醒功能，帮助用户了解产品具备什么能力。</p>
+            <div class="test-metrics"><div class="test-metric"><strong class="mono">2.5%</strong><span>有效访问率</span></div><div class="test-metric"><strong class="mono">68</strong><span>新增注册</span></div><div class="test-metric"><strong class="mono">39.7%</strong><span>专题创建率</span></div></div>
+          </article>
+          <article class="test-variant winner">
+            <div class="variant-label"><span>B · 场景价值版</span><span>3篇 · 曝光29,100 · 媒体成本¥0</span></div>
+            <div class="test-headline">不用每天重复搜索，创建一次专题就能持续追踪</div>
+            <p class="test-body">从重复搜索和信息噪音切入，展示创建专题、自动追踪、聚合去重、查看解读和接收日报的完整使用结果。</p>
+            <div class="test-metrics"><div class="test-metric"><strong class="mono">3.5%</strong><span>有效访问率</span></div><div class="test-metric"><strong class="mono">105</strong><span>新增注册</span></div><div class="test-metric"><strong class="mono">46.7%</strong><span>专题创建率</span></div></div>
+          </article>
         </div>
-        <div class="campaign-loop" style="margin-top:24px;margin-bottom:0" aria-label="内容测试闭环">
-          <div class="campaign-stage"><span>01 · HYPOTHESIS</span><strong>提出假设</strong><p>场景和结果表达能否降低理解成本。</p></div>
-          <div class="campaign-stage"><span>02 · CONTROL</span><strong>控制条件</strong><p>保持渠道、受众、时段和观察窗口相近。</p></div>
-          <div class="campaign-stage"><span>03 · TEST</span><strong>单变量测试</strong><p>每轮只改标题、首图或 CTA 之一。</p></div>
-          <div class="campaign-stage"><span>04 · MEASURE</span><strong>读取指标</strong><p>CTR、访问注册率与专题创建率。</p></div>
-          <div class="campaign-stage"><span>05 · LEARN</span><strong>判断原因</strong><p>结合评论与问卷解释数据差异。</p></div>
-          <div class="campaign-stage"><span>06 · SCALE</span><strong>进入模板</strong><p>优胜表达写入达人 Brief 与后续内容。</p></div>
+        <div class="test-verdict" aria-label="内容对照结论">
+          <div class="verdict-item"><strong class="mono">+40%</strong><span>场景价值版有效访问率相对提升</span></div>
+          <div class="verdict-item"><strong class="mono">+17.6%</strong><span>首次专题创建率相对提升</span></div>
+          <div class="verdict-item"><strong class="mono">¥0</strong><span>自有内容测试媒体成本</span></div>
         </div>
+        <p class="chart-note">结论：将场景价值版写入落地页、KOL/KOC Brief和后续内容模板。付费预算从下一阶段开始计算，不与本轮自有内容测试混在一起。</p>
       </section>
     </div>
 
@@ -855,7 +981,7 @@
       <section class="section report">
         <div class="section-head">
           <div><p class="kicker">Creator selection</p><h2 class="tight-title">先筛选，再用小预算<br>验证流量质量</h2></div>
-          <p class="section-lead">候选账号集中在AI工具、科技效率、金融资讯和职场学习方向。重点比较最近10篇内容的阅读中位数、评论质量、内容契合度、商业占比与报价。</p>
+          <p class="section-lead">自有内容完成验证后，再把场景价值版交给付费创作者。候选账号集中在AI工具、科技效率、金融资讯和职场学习方向，重点比较最近10篇内容的阅读中位数、评论质量、内容契合度、商业占比与报价。</p>
         </div>
         <div class="screening-funnel" aria-label="KOL KOC筛选漏斗">
           <div class="screening-step"><strong>36</strong><span>候选账号</span></div>
@@ -870,13 +996,19 @@
           <div class="funnel-step"><div><strong>20%</strong><span>报价与风险</span></div></div>
         </div>
         <div class="cadence" aria-label="分周投放节奏">
-          <div class="cadence-item"><time>WEEK 5</time><strong>金融垂类达人</strong><p>约1万粉 · ¥1,000</p></div>
-          <div class="cadence-item"><time>WEEK 6</time><strong>KOC 01</strong><p>低粉真实体验 · ¥100</p></div>
-          <div class="cadence-item"><time>WEEK 7</time><strong>科技垂类达人</strong><p>约1万粉 · ¥1,000</p></div>
-          <div class="cadence-item"><time>WEEK 8</time><strong>KOC 02</strong><p>复用工具效率场景 · ¥150</p></div>
-          <div class="cadence-item"><time>WEEK 9</time><strong>KOC 03</strong><p>复用行业追踪场景 · ¥200</p></div>
-          <div class="cadence-item"><time>WEEK 10</time><strong>KOC 04</strong><p>内容选题场景 · ¥150</p></div>
+          <div class="cadence-item"><time>WEEK 3</time><strong>KOC 01</strong><p>低粉真实体验 · ¥100</p></div>
+          <div class="cadence-item"><time>WEEK 4</time><strong>金融垂类达人</strong><p>约1万粉 · ¥1,000</p></div>
+          <div class="cadence-item"><time>WEEK 5</time><strong>KOC 02</strong><p>工具效率场景 · ¥150</p></div>
+          <div class="cadence-item"><time>WEEK 6</time><strong>科技垂类达人</strong><p>约1万粉 · ¥1,000</p></div>
+          <div class="cadence-item"><time>WEEK 7</time><strong>KOC 03</strong><p>行业追踪场景 · ¥200</p></div>
+          <div class="cadence-item"><time>WEEK 8</time><strong>KOC 04</strong><p>内容选题场景 · ¥150</p></div>
         </div>
+        <div class="source-confidence" aria-label="项目预算拆分">
+          <div class="confidence"><strong>自有内容测试 · ¥0</strong><p>公众号、小红书和社群由团队自行发布，不计算媒体投放成本。</p></div>
+          <div class="confidence"><strong>2名KOL · ¥2,000</strong><p>金融垂类和科技垂类各约1,000元，用于比较受众匹配与激活质量。</p></div>
+          <div class="confidence"><strong>4名KOC · ¥600</strong><p>单篇100至200元，承担真实体验、分周验证和搜索长尾。</p></div>
+        </div>
+        <p class="chart-note">本轮付费媒体预算合计¥2,600。Week 9–10不新增达人费用，复用胜出内容并观察长尾注册与回访。</p>
       </section>
     </div>
 
@@ -959,24 +1091,24 @@
       <section class="section report">
         <div class="section-head">
           <div><p class="kicker">Activation analysis</p><h2>增长不仅是注册数量，也是用户质量</h2></div>
-          <p class="section-lead">科技垂类达人发布周新增注册从136人增长至204人；完成首次专题创建的用户从56人增长至96人，专题创建率由41.2%提升至47.1%，相对提升约15%。专属链接直接归因88名注册，其中42人完成首次专题创建。</p>
+          <p class="section-lead">科技垂类达人发布周新增注册从176人增长至264人；完成首次专题创建的用户从72人增长至124人，专题创建率由40.9%提升至47.0%，相对提升约15%。专属链接直接归因88名注册，其中42人完成首次专题创建。</p>
         </div>
         <div class="before-after">
           <div class="period">
-            <span class="period-label">发布前一周 · KOC 01</span>
-            <div class="period-metrics"><div class="period-metric"><strong class="mono">136</strong><span>新增注册</span></div><div class="period-metric"><strong class="mono">56</strong><span>创建专题</span></div></div>
-            <div class="lift-note">专题创建率 <strong>41.2%</strong></div>
+            <span class="period-label">发布前一周 · KOC 02</span>
+            <div class="period-metrics"><div class="period-metric"><strong class="mono">176</strong><span>新增注册</span></div><div class="period-metric"><strong class="mono">72</strong><span>创建专题</span></div></div>
+            <div class="lift-note">专题创建率 <strong>40.9%</strong></div>
           </div>
           <div class="lift-arrow" aria-hidden="true">→</div>
           <div class="period after">
             <span class="period-label">科技垂类达人发布周</span>
-            <div class="period-metrics"><div class="period-metric"><strong class="mono">204</strong><span>新增注册 · +50%</span></div><div class="period-metric"><strong class="mono">96</strong><span>创建专题</span></div></div>
-            <div class="lift-note">专题创建率 <strong>47.1%</strong> · 相对提升约15%</div>
+            <div class="period-metrics"><div class="period-metric"><strong class="mono">264</strong><span>新增注册 · +50%</span></div><div class="period-metric"><strong class="mono">124</strong><span>创建专题</span></div></div>
+            <div class="lift-note">专题创建率 <strong>47.0%</strong> · 相对提升约15%</div>
           </div>
         </div>
         <div class="activation-impact" aria-label="增长与投放效率指标">
-          <div class="impact-metric"><strong class="mono">+68</strong><span>周新增注册净增</span><small>204 - 136</small></div>
-          <div class="impact-metric"><strong class="mono">+40</strong><span>专题创建净增</span><small>96 - 56</small></div>
+          <div class="impact-metric"><strong class="mono">+88</strong><span>周新增注册净增</span><small>264 - 176</small></div>
+          <div class="impact-metric"><strong class="mono">+52</strong><span>专题创建净增</span><small>124 - 72</small></div>
           <div class="impact-metric"><strong class="mono">¥11.4</strong><span>达人单注册成本</span><small>¥1,000 / 88</small></div>
           <div class="impact-metric"><strong class="mono">¥23.8</strong><span>达人单激活成本</span><small>¥1,000 / 42</small></div>
         </div>
@@ -1032,8 +1164,8 @@
             <div class="result-list">
               <div class="result-item"><strong class="mono">100+</strong><span>公众号、小红书及社群内容</span></div>
               <div class="result-item"><strong class="mono">58万</strong><span>十周内容与创作者累计曝光</span></div>
-              <div class="result-item"><strong class="mono">1,438</strong><span>多渠道可归因新增注册</span></div>
-              <div class="result-item"><strong class="mono">630</strong><span>完成首次专题创建的用户</span></div>
+              <div class="result-item"><strong class="mono">1,625</strong><span>多渠道可归因新增注册</span></div>
+              <div class="result-item"><strong class="mono">712</strong><span>完成首次专题创建的用户</span></div>
               <div class="result-item"><strong class="mono">+50%</strong><span>科技垂类达人发布周新增注册环比</span></div>
               <div class="result-item"><strong class="mono">+15%</strong><span>首次专题创建率相对提升</span></div>
             </div>
