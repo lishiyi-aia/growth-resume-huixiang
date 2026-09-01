@@ -4,7 +4,7 @@ banner: works/covers/sohu-dashboard.png
 year: 2026
 role: 增长运营 / 价格调研 / KOL与KOC / 内容A/B测试 / 预算复盘
 tags: [多渠道增长, 漏斗分析, 小红书, KOL/KOC, Activation]
-link: projects/ai-news-dashboard/case_study.html
+link: projects/ai-news-dashboard/case_study.html?v=restored-20260901
 ---
 
 ## 项目背景
