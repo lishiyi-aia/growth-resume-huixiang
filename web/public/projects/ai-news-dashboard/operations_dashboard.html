@@ -347,7 +347,7 @@
               </div>
               <h1 class="text-2xl font-bold tracking-tight text-ink sm:text-3xl">AI 资讯追踪 App 用户路径分析与问题归因工具</h1>
               <p class="mt-3 text-sm leading-6 text-bodyText">
-                AI 资讯追踪 App 是一个面向 AI 科技关注者、互联网从业者、投资研究用户、科技内容创作者及重度资讯消费者的 ToC 信息聚合与专题追踪产品，核心功能包括 AI 资讯聚合、专题创建、关键词监测、热点提醒、收藏整理和 AI 摘要生成。本工具用于内部运营数据初步探索，围绕用户从注册到首次核心体验的使用路径，识别不同用户群体在功能理解、使用场景、内容偏好和付费意愿上的差异，并辅助生成运营优化建议和产品反馈建议。
+                AI 资讯追踪 App 是一个面向 AI 科技关注者、互联网从业者、投资研究用户、科技内容创作者、高校学生及重度资讯消费者的 ToC 信息聚合与专题追踪产品，核心功能包括 AI 资讯聚合、专题创建、关键词监测、热点提醒、收藏整理、AI 摘要生成和 Prompt 示例。本工具用于内部运营数据初步探索，围绕用户从注册到首次核心体验的使用路径，识别不同用户群体在功能理解、使用场景、内容偏好和付费意愿上的差异，并辅助生成运营优化建议和产品反馈建议。
               </p>
               <div class="mt-4 rounded-xl border border-orange/20 bg-orange/10 p-4">
                 <p class="text-sm font-bold text-ink">数据权限与安全提醒</p>
@@ -517,7 +517,7 @@
               <div class="mb-5 flex items-start justify-between gap-3">
                 <div>
                   <h2 class="section-title">运营可解决问题</h2>
-                  <p class="section-subtitle">通过场景内容、产品教程、FAQ 和关键词示例改善。</p>
+                  <p class="section-subtitle">通过内容、教程、FAQ、Prompt 示例和用户教育内容改善。</p>
                 </div>
                 <span id="opsIssueBadge" class="badge bg-white text-primary"></span>
               </div>
@@ -589,7 +589,7 @@
       { key: 'highPay', label: '高付费意愿' },
       { key: 'pendingIssue', label: '问题待归因' }
     ];
-    const opsIssueTypes = ['功能理解', '使用场景不清晰', '关键词不会配', '价格顾虑', '内容价值说明不足'];
+    const opsIssueTypes = ['功能理解', '使用场景不清晰', 'Prompt 不会用', '价格顾虑', '内容价值说明不足'];
     const productIssueTypes = ['入口不明显', '流程复杂', '内容分类不清晰', '提醒设置不明显', '首次体验路径过长'];
     const sensitiveFieldKeywords = [
       '手机号', 'mobile', 'phone', '邮箱', 'email', '昵称', 'name', 'IP', 'UA',
@@ -607,7 +607,7 @@
     const pathIssueMeta = {
       '功能理解': { node: '浏览产品介绍 → 创建资讯专题', suggestion: '增加新手引导、功能说明、案例内容' },
       '使用场景不清晰': { node: '注册 → 浏览产品介绍', suggestion: '增加不同用户类型的场景化模板' },
-      '关键词不会配': { node: '创建专题 → 完成首次核心体验', suggestion: '增加关键词示例、行业模板和自动推荐' },
+      'Prompt 不会用': { node: '查看 AI 聚合结果 → 完成首次核心体验', suggestion: '增加 Prompt 示例、常用模板、输入提示' },
       '入口不明显': { node: '浏览产品介绍 → 创建资讯专题', suggestion: '反馈给产品优化入口层级和按钮提示' },
       '流程复杂': { node: '创建资讯专题 → 查看 AI 聚合结果', suggestion: '反馈给产品简化首次专题创建流程' },
       '价格顾虑': { node: '完成首次核心体验 → 付费意向', suggestion: '增加试用权益、价值说明和会员权益对比' },
@@ -623,21 +623,21 @@
       { user_id: 'AIA002', user_type: '互联网从业者', source_channel: '公众号', registered: 1, browsed_intro: 1, created_topic: 0, viewed_ai_summary: 0, completed_core_action: 0, enabled_reminder: 0, active_days: 2, topic_count: 0, faq_viewed: 0, prompt_viewed: 1, returned_7d: 0, use_scene: '创建专题追踪', function_need: '专题追踪', pay_willingness: '中', price_acceptance: '9.9 元/月', feedback: '不知道怎么创建 AI 行业专题，也不确定应该先追踪哪些关键词。', issue_type: '功能理解' },
       { user_id: 'AIA003', user_type: '投资研究用户', source_channel: '朋友推荐', registered: 1, browsed_intro: 1, created_topic: 1, viewed_ai_summary: 1, completed_core_action: 1, enabled_reminder: 1, active_days: 18, topic_count: 5, faq_viewed: 1, prompt_viewed: 0, returned_7d: 1, use_scene: '跟踪投资相关信息', function_need: '关键词监测', pay_willingness: '高', price_acceptance: '29.9 元/月', feedback: '希望能按公司、技术方向、产业链环节分类追踪。', issue_type: '内容分类不清晰' },
       { user_id: 'AIA004', user_type: '科技内容创作者', source_channel: '短视频平台', registered: 1, browsed_intro: 1, created_topic: 1, viewed_ai_summary: 0, completed_core_action: 0, enabled_reminder: 0, active_days: 3, topic_count: 1, faq_viewed: 0, prompt_viewed: 1, returned_7d: 0, use_scene: '查找内容选题', function_need: 'AI 摘要生成', pay_willingness: '中', price_acceptance: '19.9 元/月', feedback: '希望有适合科技内容创作者的选题模板，但结果入口不太明显。', issue_type: '入口不明显' },
-      { user_id: 'AIA005', user_type: '初级产品经理', source_channel: '自然搜索', registered: 1, browsed_intro: 1, created_topic: 0, viewed_ai_summary: 0, completed_core_action: 0, enabled_reminder: 0, active_days: 1, topic_count: 0, faq_viewed: 1, prompt_viewed: 1, returned_7d: 0, use_scene: '跟踪 AI 产品动态', function_need: '关键词监测', pay_willingness: '低', price_acceptance: '暂不付费', feedback: '想要更多关键词示例帮助建立专题，不确定是否值得付费。', issue_type: '关键词不会配' },
+      { user_id: 'AIA005', user_type: '高校学生', source_channel: '自然搜索', registered: 1, browsed_intro: 1, created_topic: 0, viewed_ai_summary: 0, completed_core_action: 0, enabled_reminder: 0, active_days: 1, topic_count: 0, faq_viewed: 1, prompt_viewed: 1, returned_7d: 0, use_scene: '学习 AI 行业知识', function_need: 'Prompt 示例', pay_willingness: '低', price_acceptance: '暂不付费', feedback: '想要更多 Prompt 示例帮助生成分析摘要，不确定是否值得付费。', issue_type: 'Prompt 不会用' },
       { user_id: 'AIA006', user_type: '重度资讯消费者', source_channel: 'App Store 搜索', registered: 1, browsed_intro: 1, created_topic: 1, viewed_ai_summary: 1, completed_core_action: 0, enabled_reminder: 0, active_days: 4, topic_count: 2, faq_viewed: 0, prompt_viewed: 0, returned_7d: 1, use_scene: '收藏整理资讯', function_need: '收藏整理', pay_willingness: '中', price_acceptance: '9.9 元/月', feedback: '收藏功能有用，但不知道如何整理专题，第一次使用路径有点复杂。', issue_type: '流程复杂' },
       { user_id: 'AIA007', user_type: '半导体行业关注者', source_channel: '社群分享', registered: 1, browsed_intro: 1, created_topic: 1, viewed_ai_summary: 1, completed_core_action: 1, enabled_reminder: 1, active_days: 16, topic_count: 4, faq_viewed: 1, prompt_viewed: 1, returned_7d: 1, use_scene: '关注半导体产业动态', function_need: '行业动态跟踪', pay_willingness: '高', price_acceptance: '29.9 元/月', feedback: '想追踪半导体产业链但不知道关键词怎么设置，希望有默认模板。', issue_type: '使用场景不清晰' },
       { user_id: 'AIA008', user_type: 'AI 科技关注者', source_channel: '公众号', registered: 1, browsed_intro: 0, created_topic: 0, viewed_ai_summary: 0, completed_core_action: 0, enabled_reminder: 0, active_days: 0, topic_count: 0, faq_viewed: 0, prompt_viewed: 0, returned_7d: 0, use_scene: '每日 AI 资讯浏览', function_need: '热点提醒', pay_willingness: '低', price_acceptance: '暂不付费', feedback: '首次进入后信息很多，不确定和普通资讯订阅有什么区别。', issue_type: '内容价值说明不足' },
       { user_id: 'AIA009', user_type: '互联网从业者', source_channel: '小红书', registered: 1, browsed_intro: 1, created_topic: 1, viewed_ai_summary: 1, completed_core_action: 1, enabled_reminder: 0, active_days: 9, topic_count: 2, faq_viewed: 1, prompt_viewed: 1, returned_7d: 1, use_scene: '创建专题追踪', function_need: '专题追踪', pay_willingness: '高', price_acceptance: '19.9 元/月', feedback: '觉得 AI 聚合结果有价值，希望新建专题时能自动推荐关键词。', issue_type: '首次体验路径过长' },
-      { user_id: 'AIA010', user_type: '科技内容创作者', source_channel: '社群分享', registered: 1, browsed_intro: 1, created_topic: 1, viewed_ai_summary: 1, completed_core_action: 1, enabled_reminder: 1, active_days: 11, topic_count: 4, faq_viewed: 1, prompt_viewed: 1, returned_7d: 1, use_scene: '查找内容选题', function_need: 'AI 摘要生成', pay_willingness: '高', price_acceptance: '29.9 元/月', feedback: '适合找科技内容选题，希望能保存常用专题模板。', issue_type: '内容价值说明不足' },
+      { user_id: 'AIA010', user_type: '科技内容创作者', source_channel: '社群分享', registered: 1, browsed_intro: 1, created_topic: 1, viewed_ai_summary: 1, completed_core_action: 1, enabled_reminder: 1, active_days: 11, topic_count: 4, faq_viewed: 1, prompt_viewed: 1, returned_7d: 1, use_scene: '查找内容选题', function_need: 'AI 摘要生成', pay_willingness: '高', price_acceptance: '29.9 元/月', feedback: '适合找科技内容选题，但希望能保存 Prompt 模板。', issue_type: 'Prompt 不会用' },
       { user_id: 'AIA011', user_type: '投资研究用户', source_channel: '自然搜索', registered: 1, browsed_intro: 1, created_topic: 1, viewed_ai_summary: 0, completed_core_action: 0, enabled_reminder: 0, active_days: 2, topic_count: 1, faq_viewed: 0, prompt_viewed: 0, returned_7d: 0, use_scene: '跟踪投资相关信息', function_need: '关键词监测', pay_willingness: '中', price_acceptance: '19.9 元/月', feedback: '创建专题后不知道去哪里看 AI 聚合结果。', issue_type: '入口不明显' },
-      { user_id: 'AIA012', user_type: '行业研究助理', source_channel: '朋友推荐', registered: 1, browsed_intro: 1, created_topic: 1, viewed_ai_summary: 1, completed_core_action: 0, enabled_reminder: 0, active_days: 3, topic_count: 1, faq_viewed: 1, prompt_viewed: 1, returned_7d: 0, use_scene: '跟踪 AI 行业变化', function_need: 'AI 资讯聚合', pay_willingness: '低', price_acceptance: '暂不付费', feedback: '内容有用但价格有点犹豫，希望先试用。', issue_type: '价格顾虑' },
+      { user_id: 'AIA012', user_type: '高校学生', source_channel: '朋友推荐', registered: 1, browsed_intro: 1, created_topic: 1, viewed_ai_summary: 1, completed_core_action: 0, enabled_reminder: 0, active_days: 3, topic_count: 1, faq_viewed: 1, prompt_viewed: 1, returned_7d: 0, use_scene: '学习 AI 行业知识', function_need: 'AI 资讯聚合', pay_willingness: '低', price_acceptance: '暂不付费', feedback: '内容有用但价格有点犹豫，希望先试用。', issue_type: '价格顾虑' },
       { user_id: 'AIA013', user_type: '重度资讯消费者', source_channel: 'App Store 搜索', registered: 1, browsed_intro: 1, created_topic: 1, viewed_ai_summary: 1, completed_core_action: 1, enabled_reminder: 1, active_days: 20, topic_count: 6, faq_viewed: 0, prompt_viewed: 0, returned_7d: 1, use_scene: '每日 AI 资讯浏览', function_need: '热点提醒', pay_willingness: '高', price_acceptance: '19.9 元/月', feedback: '提醒很有用，但入口可以更明显。', issue_type: '提醒设置不明显' },
       { user_id: 'AIA014', user_type: '半导体行业关注者', source_channel: '公众号', registered: 1, browsed_intro: 1, created_topic: 1, viewed_ai_summary: 1, completed_core_action: 1, enabled_reminder: 1, active_days: 15, topic_count: 4, faq_viewed: 1, prompt_viewed: 0, returned_7d: 1, use_scene: '关注半导体产业动态', function_need: '关键词监测', pay_willingness: '高', price_acceptance: '29.9 元/月', feedback: '想按产业链上中下游分类追踪。', issue_type: '内容分类不清晰' },
       { user_id: 'AIA015', user_type: 'AI 科技关注者', source_channel: '短视频平台', registered: 1, browsed_intro: 1, created_topic: 0, viewed_ai_summary: 0, completed_core_action: 0, enabled_reminder: 0, active_days: 1, topic_count: 0, faq_viewed: 0, prompt_viewed: 0, returned_7d: 0, use_scene: '每日 AI 资讯浏览', function_need: 'AI 资讯聚合', pay_willingness: '中', price_acceptance: '9.9 元/月', feedback: '看了介绍但没理解创建专题能带来什么。', issue_type: '功能理解' },
       { user_id: 'AIA016', user_type: '互联网从业者', source_channel: '社群分享', registered: 1, browsed_intro: 1, created_topic: 1, viewed_ai_summary: 1, completed_core_action: 1, enabled_reminder: 1, active_days: 10, topic_count: 3, faq_viewed: 1, prompt_viewed: 1, returned_7d: 1, use_scene: '创建专题追踪', function_need: '专题追踪', pay_willingness: '高', price_acceptance: '19.9 元/月', feedback: '用来跟踪竞品和行业变化，愿意为稳定提醒付费。', issue_type: '未标注问题' },
-      { user_id: 'AIA017', user_type: '科技内容创作者', source_channel: '小红书', registered: 1, browsed_intro: 1, created_topic: 1, viewed_ai_summary: 1, completed_core_action: 0, enabled_reminder: 0, active_days: 5, topic_count: 2, faq_viewed: 1, prompt_viewed: 1, returned_7d: 0, use_scene: '查找内容选题', function_need: '关键词监测', pay_willingness: '中', price_acceptance: '9.9 元/月', feedback: '想要更多关键词示例，不知道如何缩小专题范围。', issue_type: '关键词不会配' },
+      { user_id: 'AIA017', user_type: '科技内容创作者', source_channel: '小红书', registered: 1, browsed_intro: 1, created_topic: 1, viewed_ai_summary: 1, completed_core_action: 0, enabled_reminder: 0, active_days: 5, topic_count: 2, faq_viewed: 1, prompt_viewed: 1, returned_7d: 0, use_scene: '查找内容选题', function_need: 'Prompt 示例', pay_willingness: '中', price_acceptance: '9.9 元/月', feedback: '想要更多 Prompt 示例，不知道摘要怎么改成自己的表达。', issue_type: 'Prompt 不会用' },
       { user_id: 'AIA018', user_type: '投资研究用户', source_channel: '朋友推荐', registered: 1, browsed_intro: 1, created_topic: 1, viewed_ai_summary: 1, completed_core_action: 1, enabled_reminder: 1, active_days: 13, topic_count: 4, faq_viewed: 0, prompt_viewed: 0, returned_7d: 1, use_scene: '跟踪投资相关信息', function_need: '行业动态跟踪', pay_willingness: '高', price_acceptance: '29.9 元/月', feedback: '希望输出行业报告整理功能。', issue_type: '内容价值说明不足' },
-      { user_id: 'AIA019', user_type: '创业团队运营', source_channel: '自然搜索', registered: 1, browsed_intro: 0, created_topic: 0, viewed_ai_summary: 0, completed_core_action: 0, enabled_reminder: 0, active_days: 0, topic_count: 0, faq_viewed: 0, prompt_viewed: 0, returned_7d: 0, use_scene: '跟踪竞品与市场动态', function_need: 'AI 资讯聚合', pay_willingness: '低', price_acceptance: '暂不付费', feedback: '不太清楚如何建立适合自己的专题。', issue_type: '使用场景不清晰' },
+      { user_id: 'AIA019', user_type: '高校学生', source_channel: '自然搜索', registered: 1, browsed_intro: 0, created_topic: 0, viewed_ai_summary: 0, completed_core_action: 0, enabled_reminder: 0, active_days: 0, topic_count: 0, faq_viewed: 0, prompt_viewed: 0, returned_7d: 0, use_scene: '学习 AI 行业知识', function_need: 'AI 资讯聚合', pay_willingness: '低', price_acceptance: '暂不付费', feedback: '不太清楚适合学生怎么用。', issue_type: '使用场景不清晰' },
       { user_id: 'AIA020', user_type: '重度资讯消费者', source_channel: '短视频平台', registered: 1, browsed_intro: 1, created_topic: 1, viewed_ai_summary: 0, completed_core_action: 0, enabled_reminder: 0, active_days: 2, topic_count: 1, faq_viewed: 0, prompt_viewed: 0, returned_7d: 0, use_scene: '收藏整理资讯', function_need: '收藏整理', pay_willingness: '中', price_acceptance: '9.9 元/月', feedback: '内容流里分类不清楚，收藏整理路径需要更直观。', issue_type: '内容分类不清晰' }
     ];
 
@@ -661,12 +661,12 @@
     ];
 
     const sampleSurveyData = [
-      { '年龄段': '18-24', '职业 / 所在行业': '初级产品经理', '城市 / 国家': '上海', '使用情况': '试用过', '使用体验评价': 4, '使用中不顺的地方': '功能理解、关键词不会配', '最初使用原因': '跟踪 AI 产品动态', '最有价值能力': 'AI 摘要生成、关键词监测', '是否愿意付费': '暂不愿意', '价格接受度': '9.9 元/月', '付费犹豫原因': '价格顾虑', '最需要优先改进的一点': '想要更多关键词示例帮助建立专题' },
+      { '年龄段': '18-24', '职业 / 所在行业': '高校学生', '城市 / 国家': '上海', '使用情况': '试用过', '使用体验评价': 4, '使用中不顺的地方': '功能理解、Prompt 不会用', '最初使用原因': '学习 AI 行业知识', '最有价值能力': 'AI 摘要生成、Prompt 示例', '是否愿意付费': '暂不愿意', '价格接受度': '9.9 元/月', '付费犹豫原因': '价格顾虑', '最需要优先改进的一点': '想要更多 Prompt 示例帮助生成分析摘要' },
       { '年龄段': '25-34', '职业 / 所在行业': '互联网从业者', '城市 / 国家': '北京', '使用情况': '持续使用', '使用体验评价': 5, '使用中不顺的地方': '入口不明显', '最初使用原因': '每日 AI 资讯浏览', '最有价值能力': '专题追踪、热点提醒', '是否愿意付费': '愿意', '价格接受度': '19.9 元/月', '付费犹豫原因': '不确定会员权益', '最需要优先改进的一点': '提醒设置入口不明显' },
-      { '年龄段': '25-34', '职业 / 所在行业': '科技内容创作者', '城市 / 国家': '杭州', '使用情况': '持续使用', '使用体验评价': 4, '使用中不顺的地方': '内容分类不清晰、关键词不会配', '最初使用原因': '查找内容选题', '最有价值能力': 'AI 摘要生成、专题追踪', '是否愿意付费': '愿意', '价格接受度': '19.9 元/月', '付费犹豫原因': '希望先试用', '最需要优先改进的一点': '希望有适合内容创作者的选题模板' },
+      { '年龄段': '25-34', '职业 / 所在行业': '科技内容创作者', '城市 / 国家': '杭州', '使用情况': '持续使用', '使用体验评价': 4, '使用中不顺的地方': '内容分类不清晰、Prompt 不会用', '最初使用原因': '查找内容选题', '最有价值能力': 'AI 摘要生成、专题追踪', '是否愿意付费': '愿意', '价格接受度': '19.9 元/月', '付费犹豫原因': '希望先试用', '最需要优先改进的一点': '希望有适合内容创作者的选题模板' },
       { '年龄段': '35-44', '职业 / 所在行业': '投资研究', '城市 / 国家': '深圳', '使用情况': '持续使用', '使用体验评价': 5, '使用中不顺的地方': '内容分类不清晰', '最初使用原因': '跟踪投资相关信息', '最有价值能力': '关键词监测、行业动态跟踪', '是否愿意付费': '愿意', '价格接受度': '29.9 元/月', '付费犹豫原因': '不确定数据覆盖范围', '最需要优先改进的一点': '希望能按公司、技术方向、产业链环节分类追踪' },
       { '年龄段': '25-34', '职业 / 所在行业': 'AI 科技关注者', '城市 / 国家': '广州', '使用情况': '偶尔使用', '使用体验评价': 3, '使用中不顺的地方': '使用场景不清晰', '最初使用原因': '每日 AI 资讯浏览', '最有价值能力': 'AI 资讯聚合', '是否愿意付费': '不确定', '价格接受度': '9.9 元/月', '付费犹豫原因': '不确定是否值得付费', '最需要优先改进的一点': '希望更快看懂和普通资讯订阅的区别' },
-      { '年龄段': '25-34', '职业 / 所在行业': '创业团队运营', '城市 / 国家': '南京', '使用情况': '未持续使用', '使用体验评价': 3, '使用中不顺的地方': '流程复杂、功能理解', '最初使用原因': '跟踪竞品与市场动态', '最有价值能力': 'AI 资讯聚合', '是否愿意付费': '暂不愿意', '价格接受度': '暂不付费', '付费犹豫原因': '价格顾虑', '最需要优先改进的一点': '第一次创建专题步骤有点复杂' },
+      { '年龄段': '18-24', '职业 / 所在行业': '高校学生', '城市 / 国家': '南京', '使用情况': '未持续使用', '使用体验评价': 3, '使用中不顺的地方': '流程复杂、功能理解', '最初使用原因': '学习 AI 行业知识', '最有价值能力': 'AI 资讯聚合', '是否愿意付费': '暂不愿意', '价格接受度': '暂不付费', '付费犹豫原因': '价格顾虑', '最需要优先改进的一点': '第一次创建专题步骤有点复杂' },
       { '年龄段': '35-44', '职业 / 所在行业': '半导体行业关注者', '城市 / 国家': '苏州', '使用情况': '持续使用', '使用体验评价': 4, '使用中不顺的地方': '关键词设置困难、内容分类不清晰', '最初使用原因': '关注半导体产业动态', '最有价值能力': '关键词监测、行业动态跟踪', '是否愿意付费': '愿意', '价格接受度': '29.9 元/月', '付费犹豫原因': '希望覆盖更多产业链信息', '最需要优先改进的一点': '想追踪半导体产业链但不知道关键词怎么设置' },
       { '年龄段': '25-34', '职业 / 所在行业': '重度资讯消费者', '城市 / 国家': '成都', '使用情况': '偶尔使用', '使用体验评价': 4, '使用中不顺的地方': '收藏整理不清晰', '最初使用原因': '收藏整理资讯', '最有价值能力': '收藏整理、热点提醒', '是否愿意付费': '不确定', '价格接受度': '9.9 元/月', '付费犹豫原因': '使用频率不稳定', '最需要优先改进的一点': '收藏功能有用，但不知道如何整理专题' }
     ];
@@ -1331,7 +1331,7 @@
       const highPayRate = hasSourceField('pay_willingness') ? percentNumber(stats.highPay, stats.registered) : null;
       if (topicRate + 5 < allTopicRate) return '当前筛选用户的专题创建率低于整体水平，说明该用户群体可能需要更强的新手引导。';
       if (highPayRate !== null && highPayRate >= 45) return '当前筛选用户的高付费意愿占比较高，可作为试用转化和会员价值说明的重点人群。';
-      if (['功能理解', '使用场景不清晰', '关键词不会配'].includes(issue)) return '当前筛选用户的问题主要集中在运营可解决问题，建议优先通过教程、FAQ 和场景化内容解决。';
+      if (['功能理解', '使用场景不清晰', 'Prompt 不会用'].includes(issue)) return '当前筛选用户的问题主要集中在运营可解决问题，建议优先通过教程、FAQ 和场景化内容解决。';
       if (['入口不明显', '流程复杂', '内容分类不清晰'].includes(issue)) return '当前筛选用户的问题主要集中在入口或流程体验，建议反馈给产品优化首次体验路径。';
       return '当前筛选用户路径表现相对稳定，可继续观察细分场景下的功能需求与反馈标签。';
     }
@@ -1531,7 +1531,7 @@
 
     function getSegmentStatus(topicRate, coreRate, issue) {
       if (coreRate >= 65) return ['路径顺畅', 'bg-emerald-50 text-success border-emerald-200'];
-      if (['功能理解', '使用场景不清晰', '关键词不会配'].includes(issue)) return ['需要运营引导', 'bg-neutralSoft text-primary border-neutralLine'];
+      if (['功能理解', '使用场景不清晰', 'Prompt 不会用'].includes(issue)) return ['需要运营引导', 'bg-neutralSoft text-primary border-neutralLine'];
       if (['入口不明显', '流程复杂', '内容分类不清晰'].includes(issue)) return ['需要产品优化', 'bg-altSoft text-altText border-altLine'];
       if (topicRate < 55 || coreRate < 45) return ['存在流失风险', 'bg-orange/10 text-orange border-orange/20'];
       return ['需要运营引导', 'bg-neutralSoft text-primary border-neutralLine'];
@@ -1983,7 +1983,7 @@
         ops: [
           { title: '增加新手引导内容', basis: `功能理解 ${issueCounts['功能理解'] || 0} 人，专题创建率 ${formatPercent(stats.createdTopic, stats.registered)}。` },
           { title: '增加不同用户类型的使用场景案例', basis: `使用场景不清晰 ${issueCounts['使用场景不清晰'] || 0} 人。` },
-          { title: '增加关键词示例', basis: `关键词不会配 ${issueCounts['关键词不会配'] || 0} 人。` },
+          { title: '增加 Prompt 示例', basis: `Prompt 不会用 ${issueCounts['Prompt 不会用'] || 0} 人。` },
           { title: '增加专题创建教程', basis: '围绕创建资讯专题、关键词监测、热点提醒形成新手内容。' },
           { title: '增加会员价值说明', basis: `价格顾虑 ${issueCounts['价格顾虑'] || 0} 人，高付费意愿 ${hasSourceField('pay_willingness') ? formatPercent(stats.highPay, stats.registered) : '暂无付费意向字段'}。` },
           { title: '针对高付费意愿用户设计试用转化内容', basis: hasSourceField('pay_willingness') ? `当前高付费意愿用户 ${stats.highPay} 人。` : '暂无付费意向字段。' }
